@@ -1,2 +1,4 @@
 # Front-end do dnd-players-handbook
-Inspirado no Player's Handbook de Dungeons &amp; Dragons, o projeto busca proporcionar a criação de personagens e a simulação de combates através de um sistema web.
+- Projeto da disciplina de Back-end na Faculdade de Engenharia de Software 2023/02.
+- Desenvolvido por Bruno Venturini, Eduardo Freitas, Sofia Martins e Thiago Casagrande.
+- Professor Bruno Kurzawe.
