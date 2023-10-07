@@ -1,20 +1,11 @@
 @import "../../design-tokens/scss-variables";
 
-.titleStyle {
+.logo {
   margin: $spacer-xl;
   text-align: center;
 }
 
-.loginStyle {
-  display: flex;
-  flex-direction: column;
-  gap: $spacer-s;
-
-  margin: auto;
-  text-align: left;
-}
-
-.cardStyle {
+.card {
   display: flex;
   align-items: center;
   gap: $spacer-xl;
@@ -22,10 +13,42 @@
   
   width: 25em;
   background: $color-base;
-  padding: $spacer-m;
+  padding: $spacer-l;
   margin: auto;
 
   border-radius: $spacer-s;
 
   text-align: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $spacer-m;
+
+  margin: auto;
+  text-align: left;
+
+  & span {
+    font-size: 10px;
+    color: $color-warning;
+  }
+
+  & button {
+    color: $color-base;
+    font-weight: 500;
+    background: $color-secondary;
+    padding: $spacer-s;
+    border-radius: $spacer-xs;
+    &:hover {
+      background-color: $color-secondary-hover;
+    }
+  }
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer-xs;
 }

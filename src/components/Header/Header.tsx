@@ -10,7 +10,9 @@ export function Header() {
       <button>
         <b>outra coisa</b>
       </button>
-      <PersonIcon width="18" height="18" />
+      <button className={styles.accountButton}>
+        <PersonIcon width="18" height="18" />
+      </button>
     </header>
   );
 }

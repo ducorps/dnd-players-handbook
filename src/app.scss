@@ -25,4 +25,41 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    transition: 0.2s;
+  }
+}
+
+input:hover,
+textarea:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+ 
+input:focus,
+input:focus-visible,
+textarea:focus-visible,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+input::selection,
+textarea::selection {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.3);
+  
+}
+
+input {
+  width: 100%;
+  padding: $spacer-s;
+  border-radius: $spacer-xs;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+textarea {
+  resize: none;
+  padding: 10px;
 }
