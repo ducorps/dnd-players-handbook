@@ -1,0 +1,28 @@
+@import "./design-tokens/scss-variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  box-sizing: border-box;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: $color-content;
+  line-height: 1.5;
+  font-weight: 400;
+
+  border: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(#6a698e, #9c463a);
+  background-color: rgba(106, 105, 142, 1);
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

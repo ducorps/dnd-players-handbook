@@ -1,0 +1,31 @@
+@import "../../design-tokens/scss-variables";
+
+.titleStyle {
+  margin: $spacer-xl;
+  text-align: center;
+}
+
+.loginStyle {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer-s;
+
+  margin: auto;
+  text-align: left;
+}
+
+.cardStyle {
+  display: flex;
+  align-items: center;
+  gap: $spacer-xl;
+  flex-direction: column;
+  
+  width: 25em;
+  background: $color-base;
+  padding: $spacer-m;
+  margin: auto;
+
+  border-radius: $spacer-s;
+
+  text-align: center;
+}

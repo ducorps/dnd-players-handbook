@@ -1,29 +1,23 @@
 import { PersonIcon } from "@radix-ui/react-icons";
-import { Card, Heading } from "@radix-ui/themes";
+import styles from "./Home.module.scss";
 
 export function Home() {
   return (
     <>
-      <div style={titleStyle}>
-        <Heading mb="2" size="4">LOGO</Heading>
-        <Heading mb="2" size="4">TITLE</Heading>
+      <div className={styles.titleStyle}>
+        <h1>LOGO</h1>
       </div>
-      <Card size="2" style={loginStyle}>
+
+      <div className={styles.cardStyle}>
         <PersonIcon width="50" height="50" />
-        <Heading mb="2" size="4">Login</Heading>
-      </Card>
+
+        <div className={styles.loginStyle}>
+          <label htmlFor="login">Login</label>
+          <input type="text" name="Login" id="login" />
+          <label htmlFor="password">Password</label>
+          <input type="text" name="Password" id="password" />
+        </div>
+      </div>
     </>
   );
-}
-
-const titleStyle = {
-  marginTop: '54px',
-  textAlign: 'center' as const,
-}
-
-const loginStyle = {
-  background: '#212225',
-  width: '25%',
-  margin: 'auto',
-  textAlign: 'center' as const,
 }

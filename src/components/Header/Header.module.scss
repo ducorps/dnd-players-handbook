@@ -1,0 +1,22 @@
+@import "../../design-tokens/scss-variables";
+
+.headerStyle {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $spacer-m;
+
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #212225;
+
+  button {
+    border-radius: 4px;
+    padding: $spacer-xs $spacer-s;
+    line-height: 1;
+    font-weight: 500;
+
+    background-color: $color-primary;
+    box-shadow: 0 2px 10px var(--black-a7);
+  }
+}
