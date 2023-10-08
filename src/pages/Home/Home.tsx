@@ -1,29 +1,52 @@
 import { PersonIcon } from "@radix-ui/react-icons";
-import { Card, Heading } from "@radix-ui/themes";
+import styles from "./Home.module.scss";
+import * as Form from "@radix-ui/react-form";
 
 export function Home() {
   return (
     <>
-      <div style={titleStyle}>
-        <Heading mb="2" size="4">LOGO</Heading>
-        <Heading mb="2" size="4">TITLE</Heading>
+      <div className={styles.logo}>
+        <h1>LOGO</h1>
       </div>
-      <Card size="2" style={loginStyle}>
+
+      <div className={styles.card}>
         <PersonIcon width="50" height="50" />
-        <Heading mb="2" size="4">Login</Heading>
-      </Card>
+        <Form.Root className={styles.login}>
+          <Form.Field className={styles.formField} name="email">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+              }}
+            >
+              <Form.Label>E-mail</Form.Label>
+            </div>
+            <Form.Control asChild>
+              <input type="email" required />
+            </Form.Control>
+            <Form.Message match="valueMissing">
+              Please enter your email
+            </Form.Message>
+          </Form.Field>
+
+          <Form.Field className={styles.formField} name="password">
+            <div>
+              <Form.Label>Password</Form.Label>
+            </div>
+            <Form.Control asChild>
+              <input required />
+            </Form.Control>
+            <Form.Message match="valueMissing">
+              Please enter your password
+            </Form.Message>
+          </Form.Field>
+
+          <Form.Submit asChild>
+            <button>Login</button>
+          </Form.Submit>
+        </Form.Root>
+      </div>
     </>
   );
-}
-
-const titleStyle = {
-  marginTop: '54px',
-  textAlign: 'center' as const,
-}
-
-const loginStyle = {
-  background: '#212225',
-  width: '25%',
-  margin: 'auto',
-  textAlign: 'center' as const,
 }

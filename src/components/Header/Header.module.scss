@@ -1,0 +1,35 @@
+@import "../../design-tokens/scss-variables";
+
+.headerStyle {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $spacer-m;
+
+  padding: $spacer-m $spacer-xl;
+  margin-bottom: 16px;
+  background: $color-base;
+
+  button {
+    border-radius: 4px;
+    padding: $spacer-xs $spacer-s;
+    line-height: 1;
+    font-weight: 500;
+
+    background-color: $color-primary;
+    
+    &:hover {
+        background-color: $color-primary-hover;
+    }
+  }
+}
+
+.accountButton {
+    border: 1px solid $color-content;
+    background: transparent!important;
+    padding: $spacer-s!important;
+    border-radius: 50%!important;
+    &:hover {
+      border-color: $color-primary-hover;
+    }
+}

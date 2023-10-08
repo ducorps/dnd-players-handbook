@@ -1,13 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import '@radix-ui/themes/styles.css';
-import { Theme } from '@radix-ui/themes';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Home } from "./pages/Home/Home.tsx";
+import { Header } from "./components/Header/Header.tsx";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./app.scss";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Theme accentColor="iris" scaling="110%" appearance="dark" grayColor="mauve">
-      <App />
-    </Theme>
-  </React.StrictMode>,
-)
+    <Header />
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+;
