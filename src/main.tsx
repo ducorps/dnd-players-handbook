@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Root } from "./pages/Root/Root.tsx";
-import { MyCharacters } from "./pages/MyCharacters/MyCharacters.tsx";
 import "./index.scss";
 import { Login } from "./pages/Login/Login.tsx";
+import { Profile } from "./pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +16,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/myCharacters",
-        element: <MyCharacters />,
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

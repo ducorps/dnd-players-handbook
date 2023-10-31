@@ -5,15 +5,19 @@ import { Link } from "react-router-dom";
 export function Header() {
   return (
     <header className={styles.headerStyle}>
-      <button>
-        <Link to="/myCharacters" >my characters</Link>
-      </button>
-      <button>
-        <a>new</a>
-      </button>
-      <button className={styles.accountButton}>
-        <PersonIcon width="18" height="18" />
-      </button>
+      <div>
+        <button>
+          <Link to="/" >logo</Link>
+        </button>
+      </div>
+      <div>
+        <button>
+          <a>new</a>
+        </button>
+        <Link className={styles.accountButton} to="/profile">
+          <PersonIcon width="18" height="18" />
+        </Link>
+      </div>
     </header>
   );
 }
