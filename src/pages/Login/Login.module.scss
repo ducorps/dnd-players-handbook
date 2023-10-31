@@ -1,4 +1,4 @@
-@import "../../design-tokens/scss-variables";
+@import "../../design-tokens/_scss-variables.scss";
 
 .logo {
   margin: $spacer-xl;
@@ -6,11 +6,12 @@
 }
 
 .card {
+  background: blue;
   display: flex;
   align-items: center;
   gap: $spacer-xl;
   flex-direction: column;
-  
+
   width: 25em;
   background: $color-base;
   padding: $spacer-l;

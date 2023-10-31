@@ -2,34 +2,42 @@
 
 .headerStyle {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: $spacer-m;
 
   padding: $spacer-m $spacer-xl;
   margin-bottom: 16px;
   background: $color-base;
+  border-radius: 0 0 $spacer-m $spacer-m;
+
+  div {
+    display: flex;
+    gap: $spacer-m;
+  }
 
   button {
     border-radius: 4px;
     padding: $spacer-xs $spacer-s;
     line-height: 1;
     font-weight: 500;
-
+    height: fit-content;
+    align-items: center;
     background-color: $color-primary;
     
     &:hover {
         background-color: $color-primary-hover;
     }
   }
+
+  a {
+    font-weight: 600;
+  }
 }
 
 .accountButton {
-    border: 1px solid $color-content;
-    background: transparent!important;
-    padding: $spacer-s!important;
-    border-radius: 50%!important;
+    display: flex;
+    align-items: center;
     &:hover {
-      border-color: $color-primary-hover;
+      color: $color-primary-hover;
     }
 }

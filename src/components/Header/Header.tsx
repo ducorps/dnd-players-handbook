@@ -1,18 +1,23 @@
 import { PersonIcon } from "@radix-ui/react-icons";
 import styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
     <header className={styles.headerStyle}>
-      <button>
-        <b>coisa</b>
-      </button>
-      <button>
-        <b>outra coisa</b>
-      </button>
-      <button className={styles.accountButton}>
-        <PersonIcon width="18" height="18" />
-      </button>
+      <div>
+        <button>
+          <Link to="/" >logo</Link>
+        </button>
+      </div>
+      <div>
+        <button>
+          <a>new</a>
+        </button>
+        <Link className={styles.accountButton} to="/profile">
+          <PersonIcon width="18" height="18" />
+        </Link>
+      </div>
     </header>
   );
 }
