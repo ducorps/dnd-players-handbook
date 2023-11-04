@@ -12,7 +12,7 @@ export function Header() {
       </div>
       <div>
         <button>
-          <a>new</a>
+          <Link to="/NewCharacter" >new</Link>
         </button>
         <Link className={styles.accountButton} to="/profile">
           <PersonIcon width="18" height="18" />

@@ -1,0 +1,44 @@
+@import "../../design-tokens/_scss-variables.scss";
+
+.containerStyle {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  width: 100%;
+  min-height: 50vh;
+}
+
+.slideStyle > div:first-child{
+  // Animação
+  // transform-origin: right;
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.titleStyle {
+  color: $color-content;
+  margin: 0 auto $spacer-m;
+
+  text-align: center;
+  font-weight: bold;
+}
+
+.boardStyle {
+  padding: $spacer-xl $spacer-xxl;
+
+  border-radius: $spacer-s;
+  background-color: $color-base;
+}
