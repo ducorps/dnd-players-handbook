@@ -5,17 +5,21 @@
   text-align: center;
 }
 
+.container {
+  display: flex;
+  justify-content:flex-end;
+}
+
 .card {
-  background: blue;
   display: flex;
   align-items: center;
   gap: $spacer-xl;
   flex-direction: column;
+  margin-right: $spacer-xxl;
 
   width: 25em;
-  background: $color-base;
+  background: $color-base-transparent;
   padding: $spacer-l;
-  margin: auto;
 
   border-radius: $spacer-s;
 

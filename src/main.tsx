@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Root } from "./pages/Root/Root.tsx";
-import "./index.scss";
+import "./global.scss";
 import { Login } from "./pages/Login/Login.tsx";
 import { Profile } from "./pages/Profile/Profile";
+import { NewCharacter } from "./pages/NewCharacter/NewCharacter.tsx";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Login />,
+      },
+      {
+        path: "/newCharacter",
+        element: <NewCharacter />,
       },
       {
         path: "/profile",
