@@ -10,11 +10,13 @@ enum Steps {
 }
 
 export function NewCharacter() {
-  let [step, setStep] = useState<Steps>(Steps.RACE);
+  const [step, setStep] = useState<Steps>(Steps.RACE);
 
   function handleSetStep() {
     if (step < 5) {
-      setStep(++step);
+      const newStep = step + 1;
+      
+      setStep(newStep);
     }
   }
 

@@ -9,7 +9,7 @@
   min-height: 50vh;
 }
 
-.slideStyle > div:first-child{
+.slideStyle>div:first-child {
   // Animação
   // transform-origin: right;
   animation-duration: 1s;
@@ -19,12 +19,10 @@
 @keyframes slidein {
   from {
     margin-left: 100%;
-    width: 300%;
   }
 
   to {
     margin-left: 0%;
-    width: 100%;
   }
 }
 

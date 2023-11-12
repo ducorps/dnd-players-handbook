@@ -1,4 +1,4 @@
-@import "./design-tokens/scss-variables.scss";
+@import "./design-tokens/_scss-variables.scss";
 
 * {
   margin: 0;
@@ -41,7 +41,7 @@ input:hover,
 textarea:hover {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
 }
- 
+
 input:focus,
 input:focus-visible,
 textarea:focus-visible,
@@ -54,7 +54,7 @@ input::selection,
 textarea::selection {
   background-color: rgba(0, 0, 0, 0.3);
   color: rgba(0, 0, 0, 0.3);
-  
+
 }
 
 input {
