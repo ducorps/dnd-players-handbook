@@ -6,6 +6,7 @@ import "./global.scss";
 import { Login } from "./pages/Login/Login.tsx";
 import { Profile } from "./pages/Profile/Profile";
 import { NewCharacter } from "./pages/NewCharacter/NewCharacter.tsx";
+import { Home } from "./pages/Home/Home.tsx";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />,
+        element: <Login />, 
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/newCharacter",

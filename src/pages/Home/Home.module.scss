@@ -1,0 +1,85 @@
+@import "../../design-tokens/_scss-variables.scss";
+
+.container {
+  padding: $spacer-xl $spacer-xxl;
+
+  width: 100%;
+  min-height: 50vh;
+  border-radius: $spacer-m;
+}
+
+.title {
+  color: $color-content;
+  margin: 0 auto $spacer-m;
+
+  text-align: center;
+  font-weight: bold;
+}
+
+.img {
+  display: block;
+  border-radius: 50%;
+  background: $color-content;
+  width: 50px;
+  height: 50px;
+}
+
+.newCharacter {
+  @extend .card;
+  justify-content: space-between;
+  border: none!important;
+  width: 20rem!important;
+
+  background: $color-secondary!important;
+  margin-bottom: 4rem;
+  h2, h3 {
+      color: $color-base;
+      font-weight: bold;
+  }
+}
+
+.cardList {
+  display: flex;
+  gap: $spacer-s;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: $spacer-m;
+
+  padding: $spacer-m;
+  border: 1px $color-base solid;
+  border-radius: $spacer-s;
+  background: $color-base-transparent;
+
+  text-align: left;
+  line-height: 10px;
+  span {
+    display: block;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+
+.charName {
+  max-width: 9rem;
+  width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playButton {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  border-radius: 50%;
+  background: $color-secondary;
+  width: 60px;
+  height: 60px;
+  svg {
+    fill: $color-content;
+    width: 30px;
+  }
+}

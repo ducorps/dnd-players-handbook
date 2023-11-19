@@ -1,8 +1,16 @@
 import { PersonIcon } from "@radix-ui/react-icons";
 import styles from "./Login.module.scss";
 import * as Form from "@radix-ui/react-form";
+import { useEffect } from "react";
 
 export function Login() {
+  useEffect(() => {
+    document.body.className = "loginBackground";
+    return () => {
+      document.body.className = "defaultBackground";
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
