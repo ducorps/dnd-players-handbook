@@ -18,11 +18,11 @@
 
 @keyframes slidein {
   from {
-    margin-left: 100%;
+    transform: translateX(100%); 
   }
 
   to {
-    margin-left: 0%;
+    transform: translateX(0%);
   }
 }
 
@@ -36,6 +36,7 @@
 
 .boardStyle {
   padding: $spacer-xl $spacer-xxl;
+  overflow: hidden;
 
   border-radius: $spacer-s;
   background-color: $color-base;
