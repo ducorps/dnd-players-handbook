@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as Progress from "@radix-ui/react-progress";
 import styles from "./NewCharacter.module.scss";
 import SecondStep from "../../components/SecondStep/SecondStep";
+import FirstStep from "../../components/FirstStep/FirstStep";
 
 enum Steps {
   RACE = 1,
@@ -52,7 +53,7 @@ export function NewCharacter() {
             </div>
 
             <div className={styles.slideStyle}>
-              {step === Steps.RACE && <div>1st step</div>}
+              {step === Steps.RACE && <FirstStep />}
               {step === Steps.CLASS && <SecondStep />}
               {step === Steps.ABILITIES && <div>3st step</div>}
               {step === Steps.BACKGROUND && <div>4st step</div>}
