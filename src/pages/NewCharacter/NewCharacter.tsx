@@ -4,6 +4,7 @@ import styles from "./NewCharacter.module.scss";
 import SecondStep from "../../components/SecondStep/SecondStep";
 import FirstStep from "../../components/FirstStep/FirstStep";
 import CharacterInfo from "../../components/CharacterInfo/CharacterInfo";
+import ThirdStep from "../../components/ThirdStep/ThirdStep";
 
 enum Steps {
   RACE = 1,
@@ -57,7 +58,7 @@ export function NewCharacter() {
             <div className={styles.slideStyle}>
               {step === Steps.RACE && <FirstStep />}
               {step === Steps.CLASS && <SecondStep />}
-              {step === Steps.ABILITIES && <div>3st step</div>}
+              {step === Steps.ABILITIES && <ThirdStep />}
               {step === Steps.BACKGROUND && <div>4st step</div>}
               {step === Steps.EQUIPMENT && <div>5st step</div>}
             </div>
