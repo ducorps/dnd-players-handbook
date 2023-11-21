@@ -3,6 +3,7 @@ import * as Progress from "@radix-ui/react-progress";
 import styles from "./NewCharacter.module.scss";
 import SecondStep from "../../components/SecondStep/SecondStep";
 import FirstStep from "../../components/FirstStep/FirstStep";
+import CharacterInfo from "../../components/CharacterInfo/CharacterInfo";
 
 enum Steps {
   RACE = 1,
@@ -47,7 +48,8 @@ export function NewCharacter() {
             <h2 className={styles.titleStyle}>New Character</h2>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div className={styles.stepsContainer}>
+
             <div style={{ display: "flex", alignItems: "center" }}>
               <button onClick={handlePreviousStep}><img src="./src/assets/chavron-left.svg" alt="Left icon" /></button>
             </div>
@@ -60,7 +62,10 @@ export function NewCharacter() {
               {step === Steps.EQUIPMENT && <div>5st step</div>}
             </div>
 
-            <div style={{ display: "flex", alignItems: "center" }}><button onClick={handleNextStep}><img src="./src/assets/chavron-right.svg" alt="Right icon" /></button></div>
+            <div style={{ display: "flex", alignItems: "center" }}><button onClick={handleNextStep}>
+              <img src="./src/assets/chavron-right.svg" alt="Right icon" /></button>
+            </div>
+
           </div>
 
         </div>
@@ -69,6 +74,7 @@ export function NewCharacter() {
 
         <div style={{ flexBasis: "30%" }} className={styles.boardStyle}>
           <h2 className={styles.titleStyle}>Character</h2>
+          <CharacterInfo />
         </div>
       </div>
     </>

@@ -66,3 +66,10 @@
   height: 50px;
   background-color: $color-content;
 }
+
+.stepsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: center;
+}
