@@ -1,0 +1,84 @@
+@import "../../design-tokens/_scss-variables.scss";
+
+.container {
+  background: $color-base;
+  padding: $spacer-xl $spacer-xxl;
+
+  width: 100%;
+  min-height: 50vh;
+  border-radius: $spacer-m;
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+  gap: $spacer-l;
+}
+
+.basicInfo {
+  text-align: center;
+  h2 {
+    font-weight: bold;
+  }
+
+  p {
+    line-height: 18px;
+    font-size: 14px;
+  }
+}
+
+.life {
+    display: flex;
+    justify-content: space-between;
+    button {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    button:hover {
+        cursor: pointer;
+        color: $color-primary;
+    }
+}
+
+.SliderRoot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    touch-action: none;
+    width: 200px;
+    height: 20px;
+  }
+
+  .SliderTrack {
+    background-color: $color-base-transparent;
+    position: relative;
+    flex-grow: 1;
+    border-radius: 9999px;
+    height: 4px;
+  }
+
+  .SliderRange {
+    position: absolute;
+    background-color: $color-warning;
+    border-radius: 9999px;
+    height: 100%;
+  }
+
+  .SliderThumb {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: $color-warning;
+    border-radius: 10px;
+  }
+
+  .SliderThumb:hover {
+    background-color: $color-warning;
+  }
+
+  .SliderThumb:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-warning;
+  }
