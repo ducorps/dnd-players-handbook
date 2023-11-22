@@ -26,16 +26,18 @@ export function Sheet() {
             style={{
               background: "#d2d7f0",
               borderRadius: "50%",
-              width: "100px",
-              height: "100px",
+              width: "125px",
+              height: "125px",
             }}
           ></div>
-          <h2>NAME</h2>
-          <p>Race</p>
-          <p>lvl x bard</p>
+          <div>
+            <h2>NAME</h2>
+            <p>Race</p>
+            <p>lvl x bard</p>
+          </div>
         </div>
 
-        <div>
+        <div className={styles.asideBasicInfo}>
           <div className={styles.life}>
             <button onClick={onSubtractLife}>{"<"}</button>
             <p>
@@ -43,6 +45,7 @@ export function Sheet() {
             </p>
             <button onClick={onAddLife}>{">"}</button>
           </div>
+
           <form>
             <Slider.Root
               className={styles.SliderRoot}
@@ -62,6 +65,72 @@ export function Sheet() {
             </Slider.Root>
           </form>
         </div>
+      </div>
+
+      <div className={styles.content}>
+          <div className={styles.savingThrows}>Saving Throws</div>
+
+          <div className={styles.attributes}>
+            <div>
+              <h2>STR</h2>
+              <p>+1</p>
+              <p>1</p>
+            </div>
+            <p>|</p>
+
+            <div>
+              <h2>DEX</h2>
+              <p>+1</p>
+              <p>1</p>
+            </div>
+            <p>|</p>
+
+            <div>
+              <h2>CON</h2>
+              <p>+1</p>
+              <p>1</p>
+            </div>
+            <p>|</p>
+
+            <div>
+              <h2>INT</h2>
+              <p>+1</p>
+              <p>1</p>
+            </div>
+            <p>|</p>
+
+            <div>
+              <h2>WIS</h2>
+              <p>+1</p>
+              <p>1</p>
+            </div>
+            <p>|</p>
+            <div>
+              <h2>CHA</h2>
+              <p>+1</p>
+              <p>1</p>
+            </div>
+          </div>
+
+          <div className={styles.senses}>Senses</div>
+      </div>
+
+      <div className={styles.content}>
+          <div className={styles.skills}>Skills</div>
+          <div className={styles.details}>
+            <table className={styles.detailsTable}>
+              <th>Combat</th>
+              <p>|</p>
+
+              <th>Action</th>
+              <p>|</p>
+
+              <th>Spells</th>
+              <p>|</p>
+
+              <th>Equipment</th>
+            </table>
+          </div>
       </div>
     </div>
   );

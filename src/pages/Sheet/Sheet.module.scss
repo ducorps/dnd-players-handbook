@@ -2,7 +2,11 @@
 
 .container {
   background: $color-base;
-  padding: $spacer-xl $spacer-xxl;
+  display: flex;
+  flex-direction: column;
+  padding: $spacer-xxl;
+
+  gap: $spacer-xl;
 
   width: 100%;
   min-height: 50vh;
@@ -12,73 +16,162 @@
 .head {
   display: flex;
   justify-content: center;
-  gap: $spacer-l;
+  gap: $spacer-xl;
 }
 
 .basicInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  h2 {
-    font-weight: bold;
-  }
 
-  p {
-    line-height: 18px;
-    font-size: 14px;
+  gap: 0.5rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    p {
+      font-size: 0.875rem;
+      line-height: 1.2;
+    }
   }
+}
+
+.asideBasicInfo {
+  padding: $spacer-m;
 }
 
 .life {
-    display: flex;
-    justify-content: space-between;
-    button {
-        font-weight: bold;
-        font-size: 16px;
-    }
+  display: flex;
+  justify-content: space-between;
 
-    button:hover {
-        cursor: pointer;
-        color: $color-primary;
-    }
+  button {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  button:hover {
+    cursor: pointer;
+    color: $color-primary;
+  }
 }
 
 .SliderRoot {
-    position: relative;
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  width: 300px;
+  height: 20px;
+}
+
+.SliderTrack {
+  background-color: $color-base-transparent;
+  position: relative;
+  flex-grow: 1;
+  border-radius: 9999px;
+  height: 4px;
+}
+
+.SliderRange {
+  position: absolute;
+  background-color: $color-warning;
+  border-radius: 9999px;
+  height: 100%;
+}
+
+.SliderThumb {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: $color-warning;
+  border-radius: 10px;
+}
+
+.SliderThumb:hover {
+  background-color: $color-warning;
+}
+
+.SliderThumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px $color-warning;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  gap: 2rem;
+}
+
+.savingThrows {
+  padding: 0.875rem;
+  border: 1px solid $color-content;
+  border-radius: 5px;
+}
+
+.attributes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1rem;
+
+  padding: 0.875rem;
+
+  gap: 2rem;
+
+  div {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    user-select: none;
-    touch-action: none;
-    width: 200px;
-    height: 20px;
-  }
 
-  .SliderTrack {
-    background-color: $color-base-transparent;
-    position: relative;
-    flex-grow: 1;
-    border-radius: 9999px;
-    height: 4px;
-  }
+    h2 {
+      font-weight: bold;
+    }
 
-  .SliderRange {
-    position: absolute;
-    background-color: $color-warning;
-    border-radius: 9999px;
-    height: 100%;
-  }
+    p {
+      font-size: 1.5rem;
+    }
 
-  .SliderThumb {
-    display: block;
-    width: 14px;
-    height: 14px;
-    background-color: $color-warning;
-    border-radius: 10px;
+    p:last-child {
+      font-size: 1rem;
+      font-weight: 100;
+    }
   }
+}
 
-  .SliderThumb:hover {
-    background-color: $color-warning;
-  }
+.senses {
+  padding: 0.875rem;
+  border: 1px solid $color-content;
+  border-radius: 5px;
+}
 
-  .SliderThumb:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px $color-warning;
+.skills {
+  padding: 0.875rem;
+  border: 1px solid $color-content;
+  border-radius: 5px;
+}
+
+.details {
+  padding: 0.875rem;
+  border: 1px solid $color-content;
+  border-radius: 5px;
+}
+
+.detailsTable {
+  th {
+    padding: 0 1.5rem;
   }
+}
