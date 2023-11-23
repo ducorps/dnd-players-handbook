@@ -1,0 +1,13 @@
+@import "../../design-tokens/scss-variables";
+
+.horizontalSeparator {
+  background: $color-content-transparent;
+  height: 1px;
+  width: auto;
+}
+
+.verticalSeparator {
+  background: $color-content-transparent;
+  width: 1px;
+  height: auto;
+}
