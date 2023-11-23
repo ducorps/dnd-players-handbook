@@ -1,0 +1,32 @@
+@import "../../design-tokens/_scss-variables.scss";
+
+.fifthContainer {
+    display: flex;
+    width: 800px;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.selectContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px   ;
+    margin: 10px;
+    width: 50%;
+}
+
+.selectContainer div {
+    font-weight: bold;
+}
+
+.selectContainer select {
+    display: flex;
+    width: 100%;
+    border: 1px solid #111316;
+    border-radius: 5px;
+    padding-left: 5px;
+    height: 40px;
+    background-color: #202631;
+}

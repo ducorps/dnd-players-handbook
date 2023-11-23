@@ -1,0 +1,33 @@
+@import "../../design-tokens/_scss-variables.scss";
+
+.fourthStepContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 50px
+}
+
+.fourthStepTitle {
+    align-self: center;
+    font-weight: bold;
+}
+
+.skillsContainer {
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    row-gap: 50px;
+    column-gap: 10px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.checkbox input {
+    height: 20px;
+    width: 20px;
+}

@@ -5,13 +5,17 @@ import SecondStep from "../../components/SecondStep/SecondStep";
 import FirstStep from "../../components/FirstStep/FirstStep";
 import CharacterInfo from "../../components/CharacterInfo/CharacterInfo";
 import ThirdStep from "../../components/ThirdStep/ThirdStep";
+import FifthStep from "../../components/FifthStep/FifthStep";
+import FourthStep from "../../components/FourthStep/FourthStep";
+import SixthStep from "../../components/SixthStep/SixthStep";
 
 enum Steps {
   RACE = 1,
   CLASS = 2,
   ABILITIES = 3,
   BACKGROUND = 4,
-  EQUIPMENT = 5,
+  PROFICIENCIES = 5,
+  EQUIPMENT = 6,
 }
 
 export function NewCharacter() {
@@ -19,9 +23,9 @@ export function NewCharacter() {
   const [progress, setProgress] = useState(0);
 
   function handleNextStep() {
-    if (step < 5) {
+    if (step < 6) {
       const newStep = step + 1;
-      setProgress(step * 25);
+      setProgress(step * 20);
       setStep(newStep);
     }
   }
@@ -29,7 +33,7 @@ export function NewCharacter() {
   function handlePreviousStep() {
     if (step > 1) {
       const newStep = step - 1;
-      setProgress(newStep * 25 - 25);
+      setProgress(Math.ceil(newStep * 20 - 20));
       setStep(newStep);
     }
   }
@@ -59,8 +63,9 @@ export function NewCharacter() {
               {step === Steps.RACE && <FirstStep />}
               {step === Steps.CLASS && <SecondStep />}
               {step === Steps.ABILITIES && <ThirdStep />}
-              {step === Steps.BACKGROUND && <div>4st step</div>}
-              {step === Steps.EQUIPMENT && <div>5st step</div>}
+              {step === Steps.BACKGROUND && <FourthStep />}
+              {step === Steps.PROFICIENCIES && <FifthStep />}
+              {step === Steps.EQUIPMENT && <SixthStep />}
             </div>
 
             <div style={{ display: "flex", alignItems: "center" }}><button onClick={handleNextStep}>
