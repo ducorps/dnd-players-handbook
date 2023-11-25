@@ -1,26 +1,71 @@
 @import "../../design-tokens/_scss-variables.scss";
 
-.containerStyle {
-    display: flex;
-    justify-content: space-between;
-    background-color: $color-base;
-    padding: $spacer-xl $spacer-xxl;
-    
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  background-color: $color-base;
+  padding: $spacer-xl $spacer-xl;
+
+  width: 25vw;
+  min-height: 50vh;
+  border-radius: $spacer-m;
+}
+
+.title {
+  color: $color-content;
+  margin: 0 auto $spacer-m;
+
+  text-align: center;
+  font-weight: bold;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: $color-base-transparent;
+  min-height: 85px;
+  min-width: 85px;
+
+  border-radius: 50%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $spacer-m;
+
+  width: 100%;
+  height: 100%;
+
+  & button {
     width: 100%;
-    min-height: 50vh;
-    border-radius: $spacer-m;
+    color: $color-base;
+    font-weight: 500;
+    background: $color-secondary;
+    padding: $spacer-s;
+    border-radius: $spacer-xs;
+    &:hover {
+      background-color: $color-secondary-hover;
+    }
+  }
+
+  & span {
+    font-size: 10px;
+    color: $color-warning;
+  }
 }
 
-.titleStyle {
-    color: $color-content;
-    margin: 0 auto $spacer-m;
-    
-    text-align: center;
-    font-weight: bold;
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer-m;
 }
-
-.profileStyle {
-    padding-left: $spacer-xl;
-}
-
-

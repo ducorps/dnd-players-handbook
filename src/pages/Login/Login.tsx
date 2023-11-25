@@ -14,7 +14,9 @@ export function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <PersonIcon width="50" height="50" />
+        <div className={styles.icon}>
+          <PersonIcon width="50" height="50" />
+        </div>
         <Form.Root className={styles.login}>
           <Form.Field className={styles.formField} name="email">
             <div
