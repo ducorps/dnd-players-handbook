@@ -1,0 +1,53 @@
+@import "../../design-tokens/_scss-variables.scss";
+
+.SeparatorRoot {
+    background-color: white;
+  }
+  .SeparatorRoot[data-orientation='horizontal'] {
+    height: 1px;
+    width: 100%;
+  }
+  .SeparatorRoot[data-orientation='vertical'] {
+    height: auto;
+    width: 1px;
+  }
+  
+  .firstStepContainer{
+      display: flex;
+      flex-direction: row;
+  }
+  
+  .classesContainer{
+      display: grid;
+      row-gap: 40px;
+      margin: 10px;
+      margin-right: 0;  
+      width: 50%;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  }
+  
+  .classIcon {
+      width: 100px;
+      aspect-ratio: 1;
+  }
+  
+  .classDescriptionContainer {
+      display: flex;
+      gap: 25px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      margin: 10px 56px 10px 56px;
+  }
+  
+  .classTitle {
+      font-weight: bold;
+      font-size: 24px;
+  }
+  
+  .classDescription {
+      text-align: justify;
+      padding: auto;
+  }

@@ -18,19 +18,22 @@ body {
   margin: 0;
   padding: 0 5rem 0;
   min-height: 100vh;
-
 }
 
 .loginBackground {
   background: url("./assets/imgs/background-home.jpg");
   background-size: cover;
   background-color: linear-gradient(#6a698e, #9c463a);
+  background-position: left;
+
 }
 
 .defaultBackground {
   background: url("./assets/imgs/background-new-char.jpg");
   background-size: cover;
   background-color: linear-gradient(#6a698e, #9c463a);
+  background-position: center;
+
 }
 
 a {
