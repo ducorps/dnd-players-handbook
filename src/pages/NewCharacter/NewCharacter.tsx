@@ -8,8 +8,8 @@ import ThirdStep from "../../components/ThirdStep/ThirdStep";
 import FifthStep from "../../components/FifthStep/FifthStep";
 import FourthStep from "../../components/FourthStep/FourthStep";
 import SixthStep from "../../components/SixthStep/SixthStep";
-import { useLocation } from "react-router-dom";
 import { api } from "../../api/api";
+import {useParams} from "react-router";
 
 enum Steps {
   RACE = 1,
@@ -25,14 +25,14 @@ export function NewCharacter() {
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState<any>(null);
 
-  const location = useLocation();
+  const params = useParams();
 
   async function getCharacter(idCharacter: string) {
     return await api.get(`/characters/${idCharacter}`)
   }
 
   useEffect(()=> {
-    const idCharacter = location.state.id;
+    const idCharacter: string = params.idCharacter!;
 
     let character = getCharacter(idCharacter);
 
