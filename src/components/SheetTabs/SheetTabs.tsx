@@ -94,15 +94,15 @@ export function SheetTabs() {
         <div className={styles.equipment}>
           <div className={styles.icons}>
             <div>
-              <img src="src/assets/icons/coins.svg" />
+              <img src="/src/assets/icons/coins.svg" />
               <p>150 GP</p>
             </div>
             <div>
-              <img src="src/assets/icons/shield.svg" />
+              <img src="/src/assets/icons/shield.svg" />
               <p>16 AC</p>
             </div>
             <div>
-              <img src="src/assets/icons/weight.svg" />
+              <img src="/src/assets/icons/weight.svg" />
               <p>85.40 lb</p>
             </div>
           </div>

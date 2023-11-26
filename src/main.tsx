@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: <NewCharacter />,
       },
       {
-        path: "/characterSheet",
+        path: "/character/:idCharacter/sheet",
         element: <Sheet />,
       },
       {
