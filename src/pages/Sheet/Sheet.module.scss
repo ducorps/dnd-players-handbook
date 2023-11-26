@@ -11,6 +11,7 @@
   width: 100%;
   min-height: 50vh;
   border-radius: $spacer-m;
+  margin-bottom: 5rem;
 }
 
 .head {
@@ -44,8 +45,50 @@
   }
 }
 
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+
+    padding: $spacer-m;
+    height: 90px;
+    width: 65px;
+    border-radius: 8px;
+  }
+}
+
 .asideBasicInfo {
   padding: $spacer-m;
+}
+
+.characterInfo {
+  display: flex;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: $spacer-s;
+    margin: $spacer-s;
+
+    font-weight: bold;
+    background-color: $color-base-lighter;
+
+    border-radius: 8px;
+  }
 }
 
 .life {
@@ -109,7 +152,6 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
 
   gap: 2rem;
@@ -119,8 +161,9 @@
   flex: 1;
   text-align: center;
   padding: 0.875rem;
+  background: $color-base-lighter;
 
-  border: 1px solid $color-content-transparent;
+  border: 2px solid $color-content-transparent;
   border-radius: 5px;
 
   h3 {
@@ -167,19 +210,17 @@
     flex-direction: column;
     align-items: center;
 
-    background: $color-content-transparent;
-    border: 1px solid $color-content-transparent;
+    background: $color-base-lighter;
+    border: 2px solid $color-base-lighter;
     border-radius: 8px;
 
     h2 {
-      font-weight: bold;
-      color: $color-base;
+      padding: 4px 0;
     }
 
     p {
-      color: $color-base;
       font-size: 1.4rem;
-      font-weight: bold;
+      font-weight: 500;
     }
 
     p:last-child {
@@ -189,38 +230,82 @@
 
       background: $color-base;
       border-radius: 0 0 8px 8px;
-
+      padding: 4px 0;
       width: 100%;
     }
   }
 }
 
-.senses {
+.throws {
   flex: 1;
-  text-align: center;
-  padding: 0.875rem;
+  display: flex;
+  justify-content: space-around;
+
   border: 1px solid $color-content;
   border-radius: 5px;
+
+  padding: 0.875rem;
+  background: $color-base-lighter;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hitDice {
+    color: $color-warning;
+    font-size: 1.5rem;
+  }
+
+  .checkboxThrows {
+    background-color: transparent;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1.5px $color-content-transparent;
+    margin: 3px;
+
+    &:hover {
+      box-shadow: 0 0 0 2px $color-primary;
+      background-color: $color-base-transparent;
+    }
+  }
+
+  .checkboxIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .skills {
   flex: 1;
-  padding: 0.875rem;
   border: 1px solid $color-content;
   border-radius: 5px;
+
+  padding: 0.875rem;
+  background: $color-base-lighter;
 
   table {
     width: 100%;
   }
 
-  th,td {
-    padding: 2px;
+  th,
+  td {
+    padding: 2px 6px;
   }
 
   tr {
     text-align: left;
     &:hover {
-      background-color: $color-base-transparent;
+      background-color: $color-base;
     }
   }
 }
@@ -246,8 +331,8 @@
 }
 
 .details {
-  flex: 2;
-  padding: 0.875rem;
+  flex: 3;
+
   border: 1px solid $color-content;
   border-radius: 5px;
 }

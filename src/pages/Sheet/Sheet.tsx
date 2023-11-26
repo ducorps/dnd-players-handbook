@@ -4,6 +4,8 @@ import * as Slider from "@radix-ui/react-slider";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { Separator } from "../../components/Separator/Separator";
 import { CheckIcon } from "@radix-ui/react-icons";
+import { Tooltip } from "../../components/Tooltip/Tooltip";
+import { SheetTabs } from "../../components/SheetTabs/SheetTabs";
 
 export function Sheet() {
   const skills = [
@@ -53,11 +55,7 @@ export function Sheet() {
               height: "125px",
             }}
           ></div>
-          <div>
-            <h2>NAME</h2>
-            <p>Race</p>
-            <p>lvl x bard</p>
-          </div>
+          <h2>NAME</h2>
         </div>
 
         <div className={styles.asideBasicInfo}>
@@ -87,11 +85,54 @@ export function Sheet() {
               />
             </Slider.Root>
           </form>
+          <div className={styles.icon}>
+            <div>
+              <Tooltip tooltip={"Armour Class"}>
+                <img
+                  style={{ height: "32px" }}
+                  src="src/assets/icons/shield.svg"
+                />
+              </Tooltip>
+              6
+            </div>
+            <div>
+              <Tooltip tooltip={"Iniciative"}>
+                <img
+                  style={{ height: "32px" }}
+                  src="src/assets/icons/group.svg"
+                />
+              </Tooltip>
+              6
+            </div>
+            <div>
+              <Tooltip tooltip={"Perception"}>
+                <img
+                  style={{ height: "25px" }}
+                  src="src/assets/icons/eye.svg"
+                />
+              </Tooltip>
+              6
+            </div>
+            <div>
+              <Tooltip tooltip={"Speed"}>
+                <img
+                  style={{ height: "32px" }}
+                  src="src/assets/icons/speed.svg"
+                />
+              </Tooltip>
+              6
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.characterInfo}>
           <div>
-            <img style={{width:"32px"}} src="src/assets/icons/shield.svg"/>
-            <img style={{width:"32px"}} src="src/assets/icons/group.svg"/>
-            <img style={{width:"32px"}} src="src/assets/icons/eye.svg"/>
-            <img style={{width:"32px"}} src="src/assets/icons/speed.svg"/>
+            <p>Tiefling</p>
+            <p>lvl 3</p>
+          </div>
+          <div>
+            <p>Bard</p>
+            <p>Acolyte</p>
           </div>
         </div>
       </div>
@@ -172,8 +213,47 @@ export function Sheet() {
           </div>
         </div>
 
-        <div className={styles.senses}>
-          <h3>Senses</h3>
+        <div className={styles.throws}>
+          <div style={{ textAlign: "center" }}>
+            <h3>Death Saves</h3>
+            <p>Sucess</p>
+            <Checkbox.Root className={styles.checkboxThrows} id="c1">
+              <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <CheckIcon />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <Checkbox.Root className={styles.checkboxThrows} id="c1">
+              <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <CheckIcon />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <Checkbox.Root className={styles.checkboxThrows} id="c1">
+              <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <CheckIcon />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <p>Failures</p>
+            <Checkbox.Root className={styles.checkboxThrows} id="c1">
+              <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <CheckIcon />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <Checkbox.Root className={styles.checkboxThrows} id="c1">
+              <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <CheckIcon />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <Checkbox.Root className={styles.checkboxThrows} id="c1">
+              <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <CheckIcon />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+          </div>
+          <Separator orientation="vertical" />
+          <div className={styles.flex}>
+            <h3>Hit Dices</h3>
+            <h3 className={styles.hitDice}>1d8</h3>
+          </div>
         </div>
       </div>
 
@@ -212,18 +292,7 @@ export function Sheet() {
           </table>
         </div>
         <div className={styles.details}>
-          <table className={styles.detailsTable}>
-            <th>Combat</th>
-            <p>|</p>
-
-            <th>Action</th>
-            <p>|</p>
-
-            <th>Spells</th>
-            <p>|</p>
-
-            <th>Equipment</th>
-          </table>
+          <SheetTabs />
         </div>
       </div>
     </div>
