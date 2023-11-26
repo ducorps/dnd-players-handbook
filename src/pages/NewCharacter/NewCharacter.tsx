@@ -9,7 +9,7 @@ import FifthStep from "../../components/FifthStep/FifthStep";
 import FourthStep from "../../components/FourthStep/FourthStep";
 import SixthStep from "../../components/SixthStep/SixthStep";
 import { api } from "../../api/api";
-import {useParams} from "react-router";
+import { useParams } from "react-router";
 
 enum Steps {
   RACE = 1,
@@ -20,25 +20,27 @@ enum Steps {
   EQUIPMENT = 6,
 }
 
+type CharacterType = object
+
 export function NewCharacter() {
   const [step, setStep] = useState<Steps>(Steps.RACE);
   const [progress, setProgress] = useState(0);
-  const [character, setCharacter] = useState<any>(null);
+  const [character, setCharacter] = useState<CharacterType>();
 
   const params = useParams();
 
   async function getCharacter(idCharacter: string) {
-    return await api.get(`/characters/${idCharacter}`)
+    return await api.get(`/characters/${idCharacter}`);
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     const idCharacter: string = params.idCharacter!;
 
-    let character = getCharacter(idCharacter);
+    const character = getCharacter(idCharacter);
 
     setCharacter(character);
 
-  },[])
+  },[params.idCharacter])
 
   function handleNextStep() {
     if (step < 6) {
@@ -66,15 +68,17 @@ export function NewCharacter() {
       </Progress.Root>
 
       <div className={styles.containerStyle}>
-        <div style={{ flexBasis: "70%", flexDirection: "row" }} className={styles.boardStyle}>
-          <div>
-            <h2 className={styles.titleStyle}>New Character</h2>
-          </div>
-
+        <div
+          style={{ flexBasis: "70%", flexDirection: "row" }}
+          className={styles.boardStyle}
+        >
           <div className={styles.stepsContainer}>
-
             <div style={{ display: "flex", alignItems: "center" }}>
-              <button onClick={handlePreviousStep}><img src="/src/assets/chavron-left.svg" alt="Left icon" /></button>
+              {step !== Steps.RACE && (
+                <button onClick={handlePreviousStep}>
+                  <img src="/src/assets/chavron-left.svg" alt="Left icon" />
+                </button>
+              )}
             </div>
 
             <div className={styles.slideStyle}>
@@ -86,15 +90,15 @@ export function NewCharacter() {
               {step === Steps.EQUIPMENT && <SixthStep />}
             </div>
 
-            <div style={{ display: "flex", alignItems: "center" }}><button onClick={handleNextStep}>
-              <img src="/src/assets/chavron-right.svg" alt="Right icon" /></button>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              {step !== Steps.EQUIPMENT && (
+                <button onClick={handleNextStep}>
+                  <img src="/src/assets/chavron-right.svg" alt="Right icon" />
+                </button>
+              )}
             </div>
-
           </div>
-
         </div>
-
-        
 
         <div style={{ flexBasis: "30%" }} className={styles.boardStyle}>
           <h2 className={styles.titleStyle}>Character</h2>

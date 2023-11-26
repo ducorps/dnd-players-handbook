@@ -1,42 +1,43 @@
-import { PersonIcon } from "@radix-ui/react-icons";
-import styles from "./Login.module.scss";
-import * as Form from "@radix-ui/react-form";
 import { useEffect, useState } from "react";
-import { api } from '../../api/api'
-import {useNavigate} from "react-router-dom";
+import { api } from "../../api/api";
+import * as Form from "@radix-ui/react-form";
+import { useNavigate } from 'react-router-dom';
+
+import styles from "./Login.module.scss";
+import { PersonIcon } from "@radix-ui/react-icons";
 
 export function Login() {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const [credentials, setCredentials] = useState({
-    username: '',
-    password: ''
-  })
+    username: "",
+    password: "",
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({
       ...credentials,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
-  
+    console.log("asda");
     try {
       const response = await api.post('/auth/sign-in', credentials);
       const { token, refreshToken } = response.data;
-  
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
 
-      navigate('/home');
+      navigate('/');
     } catch (error) {
-      // Handle error, show pop-up with error message
-      console.log(error)
+      console.log(error);
     }
+    setLoading(false);
   };
-  
+
   useEffect(() => {
     document.body.className = "loginBackground";
     return () => {
@@ -57,14 +58,14 @@ export function Login() {
               style={{
                 display: "flex",
                 alignItems: "baseline",
-                justifyContent: "space-between"
+                justifyContent: "space-between",
               }}
             >
               <Form.Label>E-mail</Form.Label>
             </div>
 
             <Form.Control asChild>
-              <input 
+              <input
                 type="username"
                 name="username"
                 value={credentials.username}
@@ -72,7 +73,7 @@ export function Login() {
                 required
               />
             </Form.Control>
-            
+
             <Form.Message match="valueMissing">
               Please enter your email
             </Form.Message>
@@ -84,12 +85,12 @@ export function Login() {
             </div>
 
             <Form.Control asChild>
-              <input 
+              <input
                 type="password"
                 name="password"
                 value={credentials.password}
                 onChange={handleChange}
-                required 
+                required
               />
             </Form.Control>
 
@@ -99,7 +100,9 @@ export function Login() {
           </Form.Field>
 
           <Form.Submit asChild>
-            <button type="submit">Login</button>
+            <button disabled={loading} type="submit">
+              {loading ? "Loading..." : "Login"}
+            </button>
           </Form.Submit>
         </Form.Root>
       </div>

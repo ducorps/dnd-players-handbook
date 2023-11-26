@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 
 export function Home() {
   const [characterList, setCharacterList] = useState([]);
-
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
 
   async function handleCreateNewCharacter() {
+    setLoading(true)
     await api.post("/characters/new-character")
-      .then((response: any) => navigate(`/character/${response.data.id}/create`))
+      .then((response) => navigate(`/character/${response.data.id}/create`))
+    setLoading(false)
   }
 
   async function getCharactersList() {
@@ -29,7 +31,7 @@ export function Home() {
 
   return (
     <div className={styles.container}>
-      <button className={styles.newCharacter} onClick={handleCreateNewCharacter}>
+      <button disabled={loading} className={styles.newCharacter} onClick={handleCreateNewCharacter}>
         <h2>Criar novo</h2>
         <h2 style={{ fontWeight: "bold" }}>+</h2>
       </button>
