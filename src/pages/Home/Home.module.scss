@@ -27,15 +27,19 @@
 .newCharacter {
   @extend .card;
   justify-content: space-between;
-  border: none!important;
-  width: 20rem!important;
+  border: none !important;
+  width: 20rem !important;
 
-  background: $color-secondary!important;
+  background: $color-secondary !important;
   margin-bottom: 4rem;
-  h2, h3 {
-      color: $color-base;
-      font-weight: bold;
+
+  h2,
+  h3 {
+    color: $color-base;
+    font-weight: bold;
   }
+
+  cursor: pointer;
 }
 
 .cardList {
@@ -55,6 +59,7 @@
 
   text-align: left;
   line-height: 10px;
+
   span {
     display: block;
     font-size: 14px;
@@ -73,11 +78,12 @@
 .playButton {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   border-radius: 50%;
   background: $color-primary;
   width: 60px;
   height: 60px;
+
   svg {
     fill: $color-content;
     width: 30px;
