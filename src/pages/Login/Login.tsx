@@ -3,8 +3,11 @@ import styles from "./Login.module.scss";
 import * as Form from "@radix-ui/react-form";
 import { useEffect, useState } from "react";
 import { api } from '../../api/api'
+import {useNavigate} from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -26,6 +29,8 @@ export function Login() {
   
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+
+      navigate('/home');
     } catch (error) {
       // Handle error, show pop-up with error message
       console.log(error)
