@@ -20,6 +20,18 @@
     column-gap: 10px;
 }
 
+@media (max-width: 1280px) {
+    .skillsContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media(max-width: 1024px) {
+    .skillsContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 .checkbox {
     display: flex;
     align-items: center;

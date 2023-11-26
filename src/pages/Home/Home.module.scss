@@ -32,11 +32,19 @@
 
   background: $color-secondary !important;
   margin-bottom: 4rem;
-
   h2,
   h3 {
     color: $color-base;
     font-weight: bold;
+  }
+
+  &:hover {
+    background: $color-secondary-hover !important;
+    cursor: pointer;
+  }
+  &:disabled {
+    background: $color-content !important;
+    cursor: default;
   }
 
   cursor: pointer;
@@ -87,5 +95,8 @@
   svg {
     fill: $color-content;
     width: 30px;
+  }
+  &:hover {
+    background: $color-primary-hover;
   }
 }
