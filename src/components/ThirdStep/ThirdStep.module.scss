@@ -21,19 +21,45 @@
       display: grid;
       row-gap: 40px;
       margin: 10px;
-      margin-right: 0;  
+      margin-right: 0;
+      text-align: center;
       width: 70%;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr;
   }
+
+  @media (max-width: 1280px) {
+    .classesContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media(max-width: 1024px) {
+    .firstStepContainer{
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .SeparatorRoot {
+        display: none;
+    }
+    .classesContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 0;
+  
+        margin: 0;
+        width: 100%;
+    }
+    .classDescriptionContainer {
+        width: 100%!important;
+    }
+  }
   
   .classIcon {
-      width: 100px;
-      aspect-ratio: 1;
+      width: 100%;
   }
   
   .classIcon img {
-    height: 100px;
+    height: 86px;
     aspect-ratio: 1;
   }
 
