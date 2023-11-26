@@ -52,6 +52,9 @@
 
 .cardList {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 100vw;
   gap: $spacer-s;
 }
 
