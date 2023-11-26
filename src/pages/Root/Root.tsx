@@ -6,7 +6,7 @@ export function Root() {
   return (
     <>
       <Header />
-      <Link to="/home">
+      <Link to="/">
         <div className={styles.logo}>
           <img src="src/assets/imgs/logo.png" />
         </div>

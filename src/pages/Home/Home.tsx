@@ -10,7 +10,7 @@ export function Home() {
 
   async function handleCreateNewCharacter() {
     await api.post("/characters/new-character")
-      .then((response: any) => navigate(`/character/${response.data.id}/create`))
+      .then((response) => navigate(`/character/${response.data.id}/create`))
   }
 
   return (
