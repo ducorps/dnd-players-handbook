@@ -38,6 +38,11 @@
   display: flex;
   align-items: center;
 
+  svg {
+    width: 1.8rem;
+    fill: $color-primary;
+  }
+
   &:hover {
     color: $color-primary-hover;
   }
