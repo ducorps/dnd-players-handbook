@@ -74,7 +74,7 @@ export function NewCharacter() {
           <div className={styles.stepsContainer}>
 
             <div style={{ display: "flex", alignItems: "center" }}>
-              <button onClick={handlePreviousStep}><img src="./src/assets/chavron-left.svg" alt="Left icon" /></button>
+              <button onClick={handlePreviousStep}><img src="/src/assets/chavron-left.svg" alt="Left icon" /></button>
             </div>
 
             <div className={styles.slideStyle}>
@@ -87,7 +87,7 @@ export function NewCharacter() {
             </div>
 
             <div style={{ display: "flex", alignItems: "center" }}><button onClick={handleNextStep}>
-              <img src="./src/assets/chavron-right.svg" alt="Right icon" /></button>
+              <img src="/src/assets/chavron-right.svg" alt="Right icon" /></button>
             </div>
 
           </div>

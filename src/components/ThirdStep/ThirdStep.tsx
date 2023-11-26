@@ -6,43 +6,43 @@ export default function ThirdStep() {
         <div className={styles.firstStepContainer}>
             <div className={styles.classesContainer}>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/acolyte.svg"/>
+                    <img src="/src/assets/bgs/acolyte.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/charlatan.svg"/>
+                    <img src="/src/assets/bgs/charlatan.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/criminal.svg"/>
+                    <img src="/src/assets/bgs/criminal.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/entretainer.svg"/>
+                    <img src="/src/assets/bgs/entretainer.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/folkhero.svg"/>
+                    <img src="/src/assets/bgs/folkhero.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/guildartesain.svg"/>
+                    <img src="/src/assets/bgs/guildartesain.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/hermit.svg"/>
+                    <img src="/src/assets/bgs/hermit.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/noble.svg"/>
+                    <img src="/src/assets/bgs/noble.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/outlander.svg"/>
+                    <img src="/src/assets/bgs/outlander.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/sage.svg"/>
+                    <img src="/src/assets/bgs/sage.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/sailor.svg"/>
+                    <img src="/src/assets/bgs/sailor.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/soldier.svg"/>
+                    <img src="/src/assets/bgs/soldier.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/bgs/urchin.svg"/>
+                    <img src="/src/assets/bgs/urchin.svg"/>
                 </div>
             </div>
 

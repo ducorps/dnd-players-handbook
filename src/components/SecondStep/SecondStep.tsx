@@ -9,40 +9,40 @@ export default function SecondStep({character}: any) {
         <div className={styles.firstStepContainer}>
             <div className={styles.classesContainer}>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/barbarian-class.svg"/>
+                    <img src="/src/assets/classes/barbarian-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/bard-class.svg"/>
+                    <img src="/src/assets/classes/bard-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/cleric-class.svg"/>
+                    <img src="/src/assets/classes/cleric-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/druid-class.svg"/>
+                    <img src="/src/assets/classes/druid-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/fighter-class.svg"/>
+                    <img src="/src/assets/classes/fighter-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/monk-class.svg"/>
+                    <img src="/src/assets/classes/monk-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/paladin-class.svg"/>
+                    <img src="/src/assets/classes/paladin-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/ranger-class.svg"/>
+                    <img src="/src/assets/classes/ranger-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/rogue-class.svg"/>
+                    <img src="/src/assets/classes/rogue-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/sorcerer-class.svg"/>
+                    <img src="/src/assets/classes/sorcerer-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/warlock-class.svg"/>
+                    <img src="/src/assets/classes/warlock-class.svg"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/classes/wizard-class.svg"/>
+                    <img src="/src/assets/classes/wizard-class.svg"/>
                 </div>
             </div>
 

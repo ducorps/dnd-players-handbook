@@ -8,31 +8,31 @@ export default function FirstStep() {
         <div className={styles.firstStepContainer}>
             <div className={styles.classesContainer}>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Dragonborn.png"/>
+                    <img src="/src/assets/races/100px-Race_Dragonborn.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Dwarf.png"/>
+                    <img src="/src/assets/races/100px-Race_Dwarf.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Elf.png"/>
+                    <img src="/src/assets/races/100px-Race_Elf.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Gnome.png"/>
+                    <img src="/src/assets/races/100px-Race_Gnome.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Half-Elf.png"/>
+                    <img src="/src/assets/races/100px-Race_Half-Elf.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Half-Orc.png"/>
+                    <img src="/src/assets/races/100px-Race_Half-Orc.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Halfling.png"/>
+                    <img src="/src/assets/races/100px-Race_Halfling.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Human.png"/>
+                    <img src="/src/assets/races/100px-Race_Human.png"/>
                 </div>
                 <div className={styles.classIcon}>
-                    <img src="./src/assets/races/100px-Race_Tiefling.png"/>
+                    <img src="/src/assets/races/100px-Race_Tiefling.png"/>
                 </div>
             </div>
 

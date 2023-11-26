@@ -8,7 +8,7 @@ export default function CharacterInfo() {
             <ScrollArea.Viewport className="ScrollAreaViewport">
                 <div className={styles.characterInfoContainer} >
                 <div className={styles.characterImage}>
-                    <img src="./src/assets/races/100px-Race_Human.png" />
+                    <img src="/src/assets/races/100px-Race_Human.png" />
                 </div>
 
                 <div className={styles.characterAspects}>
