@@ -1,0 +1,344 @@
+@import "../../design-tokens/_scss-variables.scss";
+
+.container {
+  background: $color-base;
+  display: flex;
+  flex-direction: column;
+  padding: $spacer-xxl;
+
+  gap: $spacer-xl;
+
+  width: 100%;
+  min-height: 50vh;
+  border-radius: $spacer-m;
+  margin-bottom: 5rem;
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+  gap: $spacer-xl;
+}
+
+.basicInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  gap: 0.5rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    p {
+      font-size: 0.875rem;
+      line-height: 1.2;
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+
+    padding: $spacer-m;
+    height: 90px;
+    width: 65px;
+    border-radius: 8px;
+  }
+}
+
+.asideBasicInfo {
+  padding: $spacer-m;
+}
+
+.characterInfo {
+  display: flex;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: $spacer-s;
+    margin: $spacer-s;
+
+    font-weight: bold;
+    background-color: $color-base-lighter;
+
+    border-radius: 8px;
+  }
+}
+
+.life {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    font-weight: bold;
+    font-size: 16px;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-primary;
+    }
+  }
+}
+
+.SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  width: 300px;
+  height: 20px;
+}
+
+.SliderTrack {
+  background-color: $color-base-transparent;
+  position: relative;
+  flex-grow: 1;
+  border-radius: 9999px;
+  height: 4px;
+}
+
+.SliderRange {
+  position: absolute;
+  background-color: $color-warning;
+  border-radius: 9999px;
+  height: 100%;
+}
+
+.SliderThumb {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: $color-warning;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: $color-warning;
+  }
+}
+
+.SliderThumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px $color-warning;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+  gap: 2rem;
+}
+
+.savingThrows {
+  flex: 1;
+  text-align: center;
+  padding: 0.875rem;
+  background: $color-base-lighter;
+
+  border: 2px solid $color-content-transparent;
+  border-radius: 5px;
+
+  h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  div {
+    display: flex;
+    flex-wrap: nowrap;
+
+    div:nth-child(odd) {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      width: 4rem;
+      height: 4rem;
+      padding: 0.5rem;
+
+      p:first-child {
+        font-weight: bold;
+      }
+    }
+
+    div > div:nth-child(1) {
+      background: blue;
+    }
+  }
+}
+
+.attributes {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+  text-align: center;
+
+  div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: $color-base-lighter;
+    border: 2px solid $color-base-lighter;
+    border-radius: 8px;
+
+    h2 {
+      padding: 4px 0;
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    p:last-child {
+      font-size: 1.2rem;
+      font-weight: 100;
+      color: $color-content;
+
+      background: $color-base;
+      border-radius: 0 0 8px 8px;
+      padding: 4px 0;
+      width: 100%;
+    }
+  }
+}
+
+.throws {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+
+  border: 1px solid $color-content;
+  border-radius: 5px;
+
+  padding: 0.875rem;
+  background: $color-base-lighter;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hitDice {
+    color: $color-warning;
+    font-size: 1.5rem;
+  }
+
+  .checkboxThrows {
+    background-color: transparent;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1.5px $color-content-transparent;
+    margin: 3px;
+
+    &:hover {
+      box-shadow: 0 0 0 2px $color-primary;
+      background-color: $color-base-transparent;
+    }
+  }
+
+  .checkboxIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.skills {
+  flex: 1;
+  border: 1px solid $color-content;
+  border-radius: 5px;
+
+  padding: 0.875rem;
+  background: $color-base-lighter;
+
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 2px 6px;
+  }
+
+  tr {
+    text-align: left;
+    &:hover {
+      background-color: $color-base;
+    }
+  }
+}
+
+.CheckboxRoot {
+  background-color: transparent;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px $color-content-transparent;
+  margin-top: 6px;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $color-primary;
+    background-color: $color-base-transparent;
+  }
+}
+
+.CheckboxIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details {
+  flex: 3;
+
+  border: 1px solid $color-content;
+  border-radius: 5px;
+}
+
+.detailsTable {
+  th {
+    padding: 0 1.5rem;
+  }
+}

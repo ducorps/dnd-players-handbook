@@ -1,0 +1,117 @@
+@import "../../design-tokens/scss-variables";
+
+.tabsRoot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tabsTrigger {
+  padding: $spacer-s;
+  flex: 1;
+
+  &:hover {
+    h3 {
+      color: $color-primary;
+      transition: 0.2s;
+    }
+  }
+  &:first-child {
+    border-top-left-radius: 6px;
+  }
+  &:last-child {
+    border-top-right-radius: 6px;
+  }
+}
+
+.tabsTrigger[data-state="active"] {
+  color: $color-primary;
+  box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
+}
+
+.tabsList {
+  border-bottom: 1px solid $color-content-transparent;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tabsContent {
+  flex: 1;
+  padding: $spacer-m;
+  background: $color-base-lighter;
+  border-radius: 0 0 5px 5px;
+
+  overflow-y: auto;
+  max-height: 726px;
+}
+
+.tabTitle {
+  text-align: center;
+  margin: $spacer-m 0 $spacer-s;
+}
+
+.accordionRoot {
+  border-radius: 6px;
+  width: 100%;
+  border: 1px solid $color-content;
+}
+
+.equipment {
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacer-s;
+
+    div {
+      flex: 1;
+      width: 5rem;
+      background-color: $color-base;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      border: 3px solid $color-base;
+      border-radius: 8px;
+    }
+
+    p {
+      width: 100%;
+      text-align: center;
+      background: $color-base-lighter;
+      border-radius: 0 0 6px 6px;
+    }
+
+    img {
+      padding: 0.5rem;
+      height: 4rem;
+    }
+  }
+
+  h3 {
+    margin-top: 2rem;
+  }
+
+  .flexTables {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  table {
+    width: 100%;
+
+    th {
+      padding: 2px 6px;
+    }
+    tr,
+    td {
+      text-align: left;
+      padding: 2px 6px;
+      &:hover {
+        background-color: $color-base;
+      }
+    }
+  }
+}

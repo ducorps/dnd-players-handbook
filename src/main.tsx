@@ -7,6 +7,7 @@ import { Login } from "./pages/Login/Login.tsx";
 import { Profile } from "./pages/Profile/Profile";
 import { NewCharacter } from "./pages/NewCharacter/NewCharacter.tsx";
 import { Home } from "./pages/Home/Home.tsx";
+import { Sheet } from "./pages/Sheet/Sheet.tsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/newCharacter",
         element: <NewCharacter />,
+      },
+      {
+        path: "/characterSheet",
+        element: <Sheet />,
       },
       {
         path: "/profile",
