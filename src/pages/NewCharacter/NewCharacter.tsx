@@ -1,45 +1,88 @@
 import { useState } from "react";
+import * as Progress from "@radix-ui/react-progress";
 import styles from "./NewCharacter.module.scss";
+import SecondStep from "../../components/SecondStep/SecondStep";
+import FirstStep from "../../components/FirstStep/FirstStep";
+import CharacterInfo from "../../components/CharacterInfo/CharacterInfo";
+import ThirdStep from "../../components/ThirdStep/ThirdStep";
+import FifthStep from "../../components/FifthStep/FifthStep";
+import FourthStep from "../../components/FourthStep/FourthStep";
+import SixthStep from "../../components/SixthStep/SixthStep";
 
 enum Steps {
   RACE = 1,
   CLASS = 2,
   ABILITIES = 3,
   BACKGROUND = 4,
-  EQUIPMENT = 5,
+  PROFICIENCIES = 5,
+  EQUIPMENT = 6,
 }
 
 export function NewCharacter() {
   const [step, setStep] = useState<Steps>(Steps.RACE);
+  const [progress, setProgress] = useState(0);
 
-  function handleSetStep() {
-    if (step < 5) {
+  function handleNextStep() {
+    if (step < 6) {
       const newStep = step + 1;
-      
+      setProgress(step * 20);
+      setStep(newStep);
+    }
+  }
+
+  function handlePreviousStep() {
+    if (step > 1) {
+      const newStep = step - 1;
+      setProgress(Math.ceil(newStep * 20 - 20));
       setStep(newStep);
     }
   }
 
   return (
-    <div className={styles.containerStyle}>
-      <div style={{ flexBasis: "70%" }} className={styles.boardStyle}>
-        <div>
-          <h2 className={styles.titleStyle}>New Character</h2>
-        </div>
-        <button onClick={handleSetStep}>next step {">"}</button>
+    <>
+      <Progress.Root className={styles.ProgressRoot} value={progress}>
+        <Progress.Indicator
+          className={styles.ProgressIndicator}
+          style={{ transform: `translateX(-${100 - progress}%)` }}
+        />
+      </Progress.Root>
 
-        <div className={styles.slideStyle}>
-          {step === Steps.RACE && <div>1st step</div>}
-          {step === Steps.CLASS && <div>2st step</div>}
-          {step === Steps.ABILITIES && <div>3st step</div>}
-          {step === Steps.BACKGROUND && <div>4st step</div>}
-          {step === Steps.EQUIPMENT && <div>5st step</div>}
+      <div className={styles.containerStyle}>
+        <div style={{ flexBasis: "70%", flexDirection: "row" }} className={styles.boardStyle}>
+          <div>
+            <h2 className={styles.titleStyle}>New Character</h2>
+          </div>
+
+          <div className={styles.stepsContainer}>
+
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <button onClick={handlePreviousStep}><img src="./src/assets/chavron-left.svg" alt="Left icon" /></button>
+            </div>
+
+            <div className={styles.slideStyle}>
+              {step === Steps.RACE && <FirstStep />}
+              {step === Steps.CLASS && <SecondStep />}
+              {step === Steps.ABILITIES && <ThirdStep />}
+              {step === Steps.BACKGROUND && <FourthStep />}
+              {step === Steps.PROFICIENCIES && <FifthStep />}
+              {step === Steps.EQUIPMENT && <SixthStep />}
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center" }}><button onClick={handleNextStep}>
+              <img src="./src/assets/chavron-right.svg" alt="Right icon" /></button>
+            </div>
+
+          </div>
+
+        </div>
+
+        
+
+        <div style={{ flexBasis: "30%" }} className={styles.boardStyle}>
+          <h2 className={styles.titleStyle}>Character</h2>
+          <CharacterInfo />
         </div>
       </div>
-
-      <div style={{ flexBasis: "30%" }} className={styles.boardStyle}>
-        <h2 className={styles.titleStyle}>Character</h2>
-      </div>
-    </div>
+    </>
   );
 }
