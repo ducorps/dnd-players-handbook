@@ -1,9 +1,10 @@
-import { PersonIcon } from "@radix-ui/react-icons";
-import styles from "./Login.module.scss";
-import * as Form from "@radix-ui/react-form";
 import { useEffect, useState } from "react";
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import * as Form from "@radix-ui/react-form";
+import { useNavigate } from 'react-router-dom';
+
+import styles from "./Login.module.scss";
+import { PersonIcon } from "@radix-ui/react-icons";
 
 export function Login() {
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ export function Login() {
       const { token, refreshToken } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
-      navigate('/home');
+
+      navigate('/');
     } catch (error) {
       console.log(error);
     }

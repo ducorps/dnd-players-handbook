@@ -20,10 +20,12 @@ enum Steps {
   EQUIPMENT = 6,
 }
 
+type CharacterType = object
+
 export function NewCharacter() {
   const [step, setStep] = useState<Steps>(Steps.RACE);
   const [progress, setProgress] = useState(0);
-  const [character, setCharacter] = useState<any>(null);
+  const [character, setCharacter] = useState<CharacterType>();
 
   const params = useParams();
 
@@ -34,10 +36,11 @@ export function NewCharacter() {
   useEffect(() => {
     const idCharacter: string = params.idCharacter!;
 
-    let character = getCharacter(idCharacter);
+    const character = getCharacter(idCharacter);
 
     setCharacter(character);
-  }, []);
+
+  },[params.idCharacter])
 
   function handleNextStep() {
     if (step < 6) {

@@ -46,6 +46,8 @@
     background: $color-content !important;
     cursor: default;
   }
+
+  cursor: pointer;
 }
 
 .cardList {
@@ -65,6 +67,7 @@
 
   text-align: left;
   line-height: 10px;
+
   span {
     display: block;
     font-size: 14px;
@@ -88,6 +91,7 @@
   background: $color-primary;
   width: 60px;
   height: 60px;
+
   svg {
     fill: $color-content;
     width: 30px;
