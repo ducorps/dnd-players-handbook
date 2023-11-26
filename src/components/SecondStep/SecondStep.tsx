@@ -3,7 +3,8 @@ import * as Separator from '@radix-ui/react-separator';
 
 
 
-export default function SecondStep() {
+export default function SecondStep({character}: any) {
+
     return (
         <div className={styles.firstStepContainer}>
             <div className={styles.classesContainer}>

@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import styles from "./Home.module.scss";
 import { Tooltip } from "../../components/Tooltip/Tooltip";
+import { api } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
+
+  const navigate = useNavigate();
+
+  async function handleCreateNewCharacter() {
+    await api.post("/characters/new-character")
+      .then((response: any) => navigate(`/character/${response.data.id}/create`))
+  }
+
   return (
     <div className={styles.container}>
-      <Link to="/NewCharacter" className={styles.newCharacter}>
+      <button className={styles.newCharacter} onClick={handleCreateNewCharacter}>
         <h2>Criar novo</h2>
         <h2 style={{ fontWeight: "bold" }}>+</h2>
-      </Link>
+      </button>
 
       <div className={styles.cardList}>
         <div className={styles.card}>

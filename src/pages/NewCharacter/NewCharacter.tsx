@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Progress from "@radix-ui/react-progress";
 import styles from "./NewCharacter.module.scss";
 import SecondStep from "../../components/SecondStep/SecondStep";
@@ -8,6 +8,8 @@ import ThirdStep from "../../components/ThirdStep/ThirdStep";
 import FifthStep from "../../components/FifthStep/FifthStep";
 import FourthStep from "../../components/FourthStep/FourthStep";
 import SixthStep from "../../components/SixthStep/SixthStep";
+import { useLocation } from "react-router-dom";
+import { api } from "../../api/api";
 
 enum Steps {
   RACE = 1,
@@ -21,6 +23,22 @@ enum Steps {
 export function NewCharacter() {
   const [step, setStep] = useState<Steps>(Steps.RACE);
   const [progress, setProgress] = useState(0);
+  const [character, setCharacter] = useState<any>(null);
+
+  const location = useLocation();
+
+  async function getCharacter(idCharacter: string) {
+    return await api.get(`/characters/${idCharacter}`)
+  }
+
+  useEffect(()=> {
+    const idCharacter = location.state.id;
+
+    let character = getCharacter(idCharacter);
+
+    setCharacter(character);
+
+  },[])
 
   function handleNextStep() {
     if (step < 6) {
@@ -61,7 +79,7 @@ export function NewCharacter() {
 
             <div className={styles.slideStyle}>
               {step === Steps.RACE && <FirstStep />}
-              {step === Steps.CLASS && <SecondStep />}
+              {step === Steps.CLASS && <SecondStep character={character} />}
               {step === Steps.ABILITIES && <ThirdStep />}
               {step === Steps.BACKGROUND && <FourthStep />}
               {step === Steps.PROFICIENCIES && <FifthStep />}
