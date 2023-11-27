@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export const api = axios.create({
   baseURL: 'http://localhost:8080'
@@ -39,8 +40,9 @@ api.interceptors.response.use(
         
         return api(originalRequest);
       } catch (error) {
-        // Resolve error or redirect to Login page.
-        console.log(error)
+        const navigate = useNavigate()
+
+        navigate('/login')
       }
     }
 

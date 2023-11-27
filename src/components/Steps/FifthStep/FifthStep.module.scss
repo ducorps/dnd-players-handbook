@@ -4,6 +4,8 @@
     display: flex;
     width: 800px;
     flex-direction: row;
+    flex-wrap: wrap;
+
     gap: 50px;
     align-items: center;
     justify-content: space-around;

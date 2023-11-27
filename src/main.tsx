@@ -15,11 +15,11 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        index: true,
+        path: "/login",
         element: <Login />, 
       },
       {
-        path: "/home",
+        index: true,
         element: <Home />,
       },
       {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: <NewCharacter />,
       },
       {
-        path: "/characterSheet",
+        path: "/character/:idCharacter/sheet",
         element: <Sheet />,
       },
       {

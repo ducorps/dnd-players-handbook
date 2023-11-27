@@ -94,15 +94,15 @@ export function SheetTabs() {
         <div className={styles.equipment}>
           <div className={styles.icons}>
             <div>
-              <img src="src/assets/icons/coins.svg" />
+              <img src="/src/assets/icons/coins.svg" />
               <p>150 GP</p>
             </div>
             <div>
-              <img src="src/assets/icons/shield.svg" />
+              <img src="/src/assets/icons/shield.svg" />
               <p>16 AC</p>
             </div>
             <div>
-              <img src="src/assets/icons/weight.svg" />
+              <img src="/src/assets/icons/weight.svg" />
               <p>85.40 lb</p>
             </div>
           </div>
@@ -138,7 +138,181 @@ export function SheetTabs() {
       </Tabs.Content>
 
       <Tabs.Content className={styles.tabsContent} value="tab4">
-        <h3>Spells</h3>
+        <div style={{display: "flex", flexDirection: "column", height: "100%"}}>
+        <div className={styles.spells}>
+          <div className={styles.spellsAttributes}>
+              <div className={styles.abilityName}>CHAR</div>
+              <div className={styles.fieldName}>Spellcasting Ability</div>
+          </div>    
+          <div className={styles.spellsAttributes}>
+              <div className={styles.abilityName}>14</div>
+              <div className={styles.fieldName}>Spellsave DC</div>
+          </div>  
+          <div className={styles.spellsAttributes}>
+              <div className={styles.abilityName}>+2</div>
+              <div className={styles.fieldName}>Spellattack Bonus</div>
+          </div>  
+        </div>
+
+        <div className={styles.spellSlotsContainer}>
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Cantrips</div>
+            </div>
+            <div style={{display: "flex", height: '100%'}}>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.spellSlots}>
+            <div className={styles.spellSlotsHeader}>
+              <div>Lv: 1</div>
+              <div>Slots: 2</div>
+              <div>Used: 0</div>
+            </div>
+            <div>
+              <ul>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+                <li>spell1</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
       </Tabs.Content>
     </Tabs.Root>
   );

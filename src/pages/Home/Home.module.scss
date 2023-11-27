@@ -27,19 +27,34 @@
 .newCharacter {
   @extend .card;
   justify-content: space-between;
-  border: none!important;
-  width: 20rem!important;
+  border: none !important;
+  width: 20rem !important;
 
-  background: $color-secondary!important;
+  background: $color-secondary !important;
   margin-bottom: 4rem;
-  h2, h3 {
-      color: $color-base;
-      font-weight: bold;
+  h2,
+  h3 {
+    color: $color-base;
+    font-weight: bold;
   }
+
+  &:hover {
+    background: $color-secondary-hover !important;
+    cursor: pointer;
+  }
+  &:disabled {
+    background: $color-content !important;
+    cursor: default;
+  }
+
+  cursor: pointer;
 }
 
 .cardList {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 100vw;
   gap: $spacer-s;
 }
 
@@ -55,6 +70,7 @@
 
   text-align: left;
   line-height: 10px;
+
   span {
     display: block;
     font-size: 14px;
@@ -73,13 +89,17 @@
 .playButton {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   border-radius: 50%;
   background: $color-primary;
   width: 60px;
   height: 60px;
+
   svg {
     fill: $color-content;
     width: 30px;
+  }
+  &:hover {
+    background: $color-primary-hover;
   }
 }

@@ -19,17 +19,44 @@
   
   .classesContainer{
       display: grid;
-      row-gap: 40px;
+      row-gap: 20px;
       margin: 10px;
       margin-right: 0;  
       width: 50%;
+      text-align: center;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
   }
+
+  @media (max-width: 1280px) {
+    .classesContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media(max-width: 1024px) {
+    .firstStepContainer{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .SeparatorRoot {
+        display: none;
+    }
+    .classesContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 0;
+
+        margin: 0;
+        width: 100%;
+    }
+    .classDescriptionContainer {
+        width: 100%!important;
+    }
+  }
   
   .classIcon {
-      width: 100px;
-      aspect-ratio: 1;
+      width: 100%;
+      height: 5rem;
   }
   
   .classDescriptionContainer {

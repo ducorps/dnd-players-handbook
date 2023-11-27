@@ -21,6 +21,7 @@
   display: grid;
   margin: 10px;
   margin-right: 0;
+  text-align: center;
   width: 50%;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -28,14 +29,35 @@
 
 @media (max-width: 1280px) {
   .classesContainer {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 1024px) {
+  .firstStepContainer{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .SeparatorRoot {
+      display: none;
+  }
+  .classesContainer {
+      grid-template-columns: 1fr 1fr 1fr;
+      row-gap: 0;
+
+      margin: 0;
+      width: 100%;
+  }
+  .classDescriptionContainer {
+      width: 100%!important;
   }
 }
 
 .classIcon {
+    img {
   width: 5rem;
-  aspect-ratio: 1;
+  height: 100%;
+  }
 }
 
 .classDescriptionContainer {
@@ -45,7 +67,7 @@
   align-items: center;
   justify-content: center;
   width: 50%;
-  margin: $spacer-s $spacer-xl $spacer-s $spacer-xl;
+  margin: 10px 56px 10px 56px;
 }
 
 .classTitle {

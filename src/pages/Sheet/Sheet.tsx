@@ -251,7 +251,7 @@ export function Sheet() {
           </div>
           <Separator orientation="vertical" />
           <div className={styles.flex}>
-            <h3>Hit Dices</h3>
+            <h3>Hit Dice</h3>
             <h3 className={styles.hitDice}>1d8</h3>
           </div>
         </div>
