@@ -3,10 +3,12 @@
 .SeparatorRoot {
   background-color: white;
 }
+
 .SeparatorRoot[data-orientation="horizontal"] {
   height: 1px;
   width: 100%;
 }
+
 .SeparatorRoot[data-orientation="vertical"] {
   height: auto;
   width: 1px;
@@ -29,34 +31,41 @@
 
 @media (max-width: 1280px) {
   .classesContainer {
-      grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media(max-width: 1024px) {
-  .firstStepContainer{
+  .firstStepContainer {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .SeparatorRoot {
-      display: none;
-  }
-  .classesContainer {
-      grid-template-columns: 1fr 1fr 1fr;
-      row-gap: 0;
 
-      margin: 0;
-      width: 100%;
+  .SeparatorRoot {
+    display: none;
   }
+
+  .classesContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 0;
+
+    margin: 0;
+    width: 100%;
+  }
+
   .classDescriptionContainer {
-      width: 100%!important;
+    width: 100% !important;
   }
 }
 
 .classIcon {
-    img {
-  width: 5rem;
-  height: 100%;
+  img {
+    width: 5rem;
+    height: 100%;
+  }
+
+  :hover {
+    cursor: pointer;
   }
 }
 
