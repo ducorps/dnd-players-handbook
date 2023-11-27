@@ -340,7 +340,7 @@ export function Sheet() {
           <Separator orientation="vertical" />
           <div className={styles.flex}>
             <h3>Hit Dice</h3>
-            <h3 className={styles.hitDice}>{character.hitDie}</h3>
+            <h3 className={styles.hitDice}>{character?.hitDie}</h3>
           </div>
         </div>
       </div>
