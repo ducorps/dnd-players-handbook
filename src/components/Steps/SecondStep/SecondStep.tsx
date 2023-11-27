@@ -3,7 +3,7 @@ import styles from "./SecondStep.module.scss";
 import * as Separator from '@radix-ui/react-separator';
 
 type SecondStepProps = {
-    handleSaveClass: (characterClass: string) => void;
+    changeClass: (characterClass: string) => void;
 };
 
 const descriptions = {
@@ -21,19 +21,15 @@ const descriptions = {
     WIZARD: "Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, brute-force mind control, and much more.",
 }
 
-export default function SecondStep({ handleSaveClass }: SecondStepProps) {
-    const [description, setDescription] = useState("");
-    const [title, setTitle] = useState("");
-
-    useEffect(() => {
-        saveClass("BARBARIAN")
-      }, [])
+export default function SecondStep({ changeClass }: SecondStepProps) {
+    const [description, setDescription] = useState(descriptions.BARBARIAN);
+    const [title, setTitle] = useState("BARBARIAN");
 
     const saveClass = (characterClass: string) => {
         setDescription(descriptions[characterClass]);
         setTitle(characterClass);
 
-        handleSaveClass(characterClass)
+        changeClass(characterClass)
     }
 
     return (

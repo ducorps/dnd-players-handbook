@@ -26,6 +26,11 @@ export function NewCharacter() {
   const [step, setStep] = useState<Steps>(Steps.RACE);
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState<CharacterType>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedRace, setSelectedRace] = useState<string>("");
+  const [selectedProficiencies, setSelectedProficiencies] = useState<string[]>([]);
+  const [selectedClass, setSelectedClass] = useState<string>("");
+  const [selectedBackground, setSelectedBackground] = useState<string>("");
 
   const params = useParams();
 
@@ -42,40 +47,97 @@ export function NewCharacter() {
 
   },[params.idCharacter])
 
-  function handleNextStep() {
+  async function handleNextStep() {
+    console.log(step)
+    switch (step) {
+      case 1:
+          await saveRace();
+        break;
+      case 2:
+          await saveClass();
+        break;
+      case 3:
+          await saveBackground();
+        break;
+      case 4:
+          await saveSelectedProficiencies();
+        break;
+    }
     if (step < 6) {
       const newStep = step + 1;
       setProgress(step * 20);
       setStep(newStep);
+      setIsLoading(false)
     }
   }
 
-  const handleSaveRace = async (race: string) => {
-    await api.post(`/characters/${params.idCharacter}/race`, {
-      raceType: race
-    }).then((response) => {
-      setCharacter(response.data);
-    })
+  const changeSelectedProficiencies = async (proficiencies: string[]) => {
+    setSelectedProficiencies(proficiencies)
   };
 
-  const handleSaveClass = async (characterClass: string) => {
-    await api.post(`/characters/${params.idCharacter}/class`, {
-      classType: characterClass
-    }).then((response) => {
-      setCharacter(response.data)
-    })
+  async function saveSelectedProficiencies () {
+    if(!isLoading){
+      await api.post(`/characters/${params.idCharacter}/skill`,
+          selectedProficiencies
+      ).then((response) => {
+        setCharacter(response.data);
+        setIsLoading(false)
+      })
+    }
 
-    handleNextStep();
+    setIsLoading(true)
+  }
+
+  const changeSelectedRace = async (race: string) => {
+    setSelectedRace(race)
   };
 
-  const handleSaveBackground = async (background: string) => {
-    await api.post(`/characters/${params.idCharacter}/background`, {
-        backgroundType: background
-    }).then((response) => {
-        setCharacter(response.data)
-    })
+  async function saveRace() {
+    if(!isLoading){
+      await api.post(`/characters/${params.idCharacter}/race`, {
+        raceType: selectedRace
+      }).then((response) => {
+        setCharacter(response.data);
+        setIsLoading(false)
+      })
+    }
 
-    handleNextStep();
+    setIsLoading(true)
+  }
+
+  async function saveClass() {
+    console.log(isLoading)
+    if(!isLoading){
+      await api.post(`/characters/${params.idCharacter}/class`, {
+        classType: selectedClass
+      }).then((response) => {
+        setCharacter(response.data);
+        setIsLoading(false)
+      })
+    }
+
+    setIsLoading(true)
+  }
+
+  const changeSelectClass = async (characterClass: string) => {
+    setSelectedClass(characterClass)
+  };
+
+  async function saveBackground() {
+    if(!isLoading){
+      await api.post(`/characters/${params.idCharacter}/background`, {
+        backgroundType: selectedBackground
+      }).then((response) => {
+        setCharacter(response.data);
+        setIsLoading(false)
+      })
+    }
+
+    setIsLoading(true)
+  }
+
+  const changeSelectedBackground = async (background: string) => {
+    setSelectedBackground(background)
   }
 
   function handlePreviousStep() {
@@ -103,10 +165,10 @@ export function NewCharacter() {
             </div>
 
             <div className={styles.slideStyle}>
-              {step === Steps.RACE && <FirstStep handleSaveRace={handleSaveRace}/>}
-              {step === Steps.CLASS && <SecondStep handleSaveClass={handleSaveClass} />}
-              {step === Steps.ABILITIES && <ThirdStep handleSaveBackground={handleSaveBackground}/>}
-              {step === Steps.BACKGROUND && <FourthStep />}
+              {step === Steps.RACE && <FirstStep changeRace={changeSelectedRace}/>}
+              {step === Steps.CLASS && <SecondStep changeClass={changeSelectClass} />}
+              {step === Steps.ABILITIES && <ThirdStep changeBackground={changeSelectedBackground}/>}
+              {step === Steps.BACKGROUND && <FourthStep changeProficiencies={changeSelectedProficiencies}/>}
               {step === Steps.PROFICIENCIES && <FifthStep />}
               {step === Steps.EQUIPMENT && <SixthStep />}
             </div>
