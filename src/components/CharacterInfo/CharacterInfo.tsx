@@ -4,12 +4,17 @@ import styles from './CharacterInfo.module.scss'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { api } from '../../api/api';
+import { useNavigate } from "react-router-dom";
 
-export default function CharacterInfo() {
-    const params = useParams();
+type InfoProps = {
+    characterSaved: any
+}
+
+export default function CharacterInfo({characterSaved}: InfoProps) {
+    const navigate = useNavigate();
     const [character, setCharacter] = useState();
     const [characterName, setCharacterName] = useState();
-    const [attributes, setAttributes] = useState({
+    const [attributes] = useState({
         strength: 0,
         dexterity: 0,
         constitution: 0,
@@ -18,42 +23,26 @@ export default function CharacterInfo() {
         charisma: 0
     });
 
-    const strModifier = Math.floor((character?.strength - 10)/2) >= 0 ? ("+"+Math.floor((character?.strength - 10)/2)) : (Math.floor((character?.strength - 10)/2));
-    const dexModifier = Math.floor((character?.dexterity - 10)/2) >= 0 ? ("+"+Math.floor((character?.dexterity - 10)/2)) : (Math.floor((character?.dexterity - 10)/2));
-    const conModifier = Math.floor((character?.constitution - 10)/2) >= 0 ? ("+"+Math.floor((character?.constitution - 10)/2)) : (Math.floor((character?.constitution - 10)/2));
-    const intModifier = Math.floor((character?.intelligence - 10)/2) >= 0 ? ("+"+Math.floor((character?.intelligence - 10)/2)) : (Math.floor((character?.intelligence - 10)/2));
-    const wisModifier = Math.floor((character?.wisdom - 10)/2) >= 0 ? ("+"+Math.floor((character?.wisdom - 10)/2)) : (Math.floor((character?.wisdom - 10)/2));
-    const chaModifier = Math.floor((character?.charisma - 10)/2) >= 0 ? ("+"+Math.floor((character?.charisma - 10)/2)) : (Math.floor((character?.charisma - 10)/2));
-
-    async function getCharacter() {
-        const idCharacter: string = params.idCharacter!;
-        
-    
-        await api.get(`/characters/${idCharacter}`)
-          .then((res) => {
-            setCharacter(res.data);
-          })
-      }
+    const strModifier = Math.floor((characterSaved?.strength - 10)/2) >= 0 ? ("+"+Math.floor((characterSaved?.strength - 10)/2)) : (Math.floor((characterSaved?.strength - 10)/2));
+    const dexModifier = Math.floor((characterSaved?.dexterity - 10)/2) >= 0 ? ("+"+Math.floor((characterSaved?.dexterity - 10)/2)) : (Math.floor((characterSaved?.dexterity - 10)/2));
+    const conModifier = Math.floor((characterSaved?.constitution - 10)/2) >= 0 ? ("+"+Math.floor((characterSaved?.constitution - 10)/2)) : (Math.floor((characterSaved?.constitution - 10)/2));
+    const intModifier = Math.floor((characterSaved?.intelligence - 10)/2) >= 0 ? ("+"+Math.floor((characterSaved?.intelligence - 10)/2)) : (Math.floor((characterSaved?.intelligence - 10)/2));
+    const wisModifier = Math.floor((characterSaved?.wisdom - 10)/2) >= 0 ? ("+"+Math.floor((characterSaved?.wisdom - 10)/2)) : (Math.floor((characterSaved?.wisdom - 10)/2));
+    const chaModifier = Math.floor((characterSaved?.charisma - 10)/2) >= 0 ? ("+"+Math.floor((characterSaved?.charisma - 10)/2)) : (Math.floor((characterSaved?.charisma - 10)/2));
 
 
     useEffect(() => {
-        getCharacter();
+        setCharacter(characterSaved);
     }, [])
 
-    async function addCharacterName() {
 
-        await api.post(`characters/${character?.id}/name`, characterName, {headers: {'Content-Type': 'application/text'}})
+    async function saveFinalStep() {
+        await api.post(`characters/${character?.id}/final-step` , {...attributes, name: characterName}, {headers: {'Content-Type': 'application/json'}})
           .then((res) => {
             setCharacter(res.data);
-          })
-    }
+            navigate(`/character/${res.data.id}/sheet`)
+          });
 
-    async function setCharacterAttributes() {
-        
-        await api.post(`characters/${character?.id}/attribute`, attributes, {headers: {'Content-Type': 'application/json'}})
-          .then((res) => {
-            setCharacter(res.data);
-          })
     }
 
     function handleStrChange(event) {
@@ -74,18 +63,14 @@ export default function CharacterInfo() {
     function handleChaChange(event) {
         attributes.charisma = event.target.value
     }
-    
 
     function handleNameChange(event) {
         setCharacterName(event.target.value);
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-
-        addCharacterName();
-
-        setCharacterAttributes();
+        await saveFinalStep();
     }
 
     return(
@@ -105,7 +90,7 @@ export default function CharacterInfo() {
                             placeholder='Insert your character name...'
                             onChange={handleNameChange}
                         />
-                        <div style={{fontWeight: 'bold'}}>LV 1 - Barbarian</div>
+                        <div style={{fontWeight: 'bold'}}>LVL {character?.level} - {character?.characterClass?.classType}</div>
                     </div>
 
                     <div className={styles.characterAttributes} >
@@ -116,27 +101,27 @@ export default function CharacterInfo() {
                         </div>
                         <div className={styles.attributes}>
                             <div>DEX</div>
-                            <div>+1</div>
+                            <div>{dexModifier}</div>
                             <input type="text" placeholder='0' onChange={handleDexChange}/>
                         </div>
                         <div className={styles.attributes}>
                             <div>CON</div>
-                            <div>+1</div>
+                            <div>{conModifier}</div>
                             <input type="text" placeholder='0' onChange={handleConChange}/>
                         </div>
                         <div className={styles.attributes}>
                             <div>INT</div>
-                            <div>+1</div>
+                            <div>{intModifier}</div>
                             <input type="text" placeholder='0' onChange={handleIntChange}/>
                         </div>
                         <div className={styles.attributes}>
                             <div>WIS</div>
-                            <div>+1</div>
+                            <div>{wisModifier}</div>
                             <input type="text" placeholder='0' onChange={handleWisChange}/>
                         </div>
                         <div className={styles.attributes}>
                             <div>CHA</div>
-                            <div>+1</div>
+                            <div>{chaModifier}</div>
                             <input type="text" placeholder='0' onChange={handleChaChange}/>
                         </div>
                     </div>

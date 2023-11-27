@@ -15,6 +15,7 @@ export function Home() {
 
   async function handleCreateNewCharacter() {
     setLoading(true);
+
     await api
       .post("/characters/new-character")
       .then((response) => navigate(`/character/${response.data.id}/create`));
