@@ -24,7 +24,6 @@ export function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
-    console.log("asda");
     try {
       const response = await api.post('/auth/sign-in', credentials);
       const { token, refreshToken } = response.data;

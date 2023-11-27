@@ -18,99 +18,116 @@ export function Sheet() {
   async function getCharacter() {
     const idCharacter: string = params.idCharacter!;
 
-    await api.get(`/characters/${idCharacter}`)
-      .then((res) => {
-        setCharacter(res.data);
-        setLife(res.data.life);
-        buildSkills(res.data!.skill)
-      })
+    await api.get(`/characters/${idCharacter}`).then((res) => {
+      setCharacter(res.data);
+      setLife(res.data.life);
+      buildSkills(res.data!.skill);
+    });
   }
 
   useEffect(() => {
     getCharacter();
-  }, [])
+  }, []);
 
   function buildSkills(skills) {
-    let mapSkill: any[] = []
+    let mapSkill: any[] = [];
     Object.entries(skills).map((skill: [string, unknown]) => {
       let prof = false;
       switch (skill[0]) {
         case "acrobatics":
-            prof = (skill[1] !== dexModifier);
+          prof = skill[1] !== dexModifier;
           break;
         case "animalHandling":
-            prof = (skill[1] !== wisModifier);
-            break;
+          prof = skill[1] !== wisModifier;
+          break;
         case "arcana":
-            prof = (skill[1] !== intModifier);
-            break;
+          prof = skill[1] !== intModifier;
+          break;
         case "athletics":
-            prof = (skill[1] !== strModifier);
-            break;
+          prof = skill[1] !== strModifier;
+          break;
         case "deception":
-            prof = (skill[1] !== chaModifier);
-            break;
+          prof = skill[1] !== chaModifier;
+          break;
         case "history":
-            prof = (skill[1] !== intModifier);
-            break;
+          prof = skill[1] !== intModifier;
+          break;
         case "insight":
-            prof = (skill[1] !== wisModifier);
-            break;
+          prof = skill[1] !== wisModifier;
+          break;
         case "intimidation":
-            prof = (skill[1] !== chaModifier);
-            break;
+          prof = skill[1] !== chaModifier;
+          break;
         case "investigation":
-            prof = (skill[1] !== intModifier);
-            break;
+          prof = skill[1] !== intModifier;
+          break;
         case "medicine":
-            prof = (skill[1] !== wisModifier);
-            break;
+          prof = skill[1] !== wisModifier;
+          break;
         case "nature":
-            prof = (skill[1] !== intModifier);
-            break;
+          prof = skill[1] !== intModifier;
+          break;
         case "perception":
-            prof = (skill[1] !== wisModifier);
-            break;
+          prof = skill[1] !== wisModifier;
+          break;
         case "performance":
-            prof = (skill[1] !== chaModifier);
-            break;
+          prof = skill[1] !== chaModifier;
+          break;
         case "persuasion":
-            prof = (skill[1] !== chaModifier);
-            break;
+          prof = skill[1] !== chaModifier;
+          break;
         case "religion":
-            prof = (skill[1] !== intModifier);
-            break;
+          prof = skill[1] !== intModifier;
+          break;
         case "sleightOfHand":
-            prof = (skill[1] !== dexModifier);
-            break;
+          prof = skill[1] !== dexModifier;
+          break;
         case "stealth":
-            prof = (skill[1] !== dexModifier);
-            break;
+          prof = skill[1] !== dexModifier;
+          break;
         case "survival":
-            prof = (skill[1] !== wisModifier);
-            break;
+          prof = skill[1] !== wisModifier;
+          break;
       }
 
-      let modifier = skill[1]
-      let s = skill[0]
+      let modifier = skill[1];
+      let s = skill[0];
 
       mapSkill.push({
         proficiency: prof,
         modifier: modifier,
         skill: s,
-      })
+      });
       // let bonus = modifier + (prof ? 2 : 0)
-    })
+    });
 
     setMapSkill(mapSkill);
   }
 
-  const strModifier = Math.floor((character?.strength - 10)/2) >= 0 ? ("+"+Math.floor((character?.strength - 10)/2)) : (Math.floor((character?.strength - 10)/2));
-  const dexModifier = Math.floor((character?.dexterity - 10)/2) >= 0 ? ("+"+Math.floor((character?.dexterity - 10)/2)) : (Math.floor((character?.dexterity - 10)/2));
-  const conModifier = Math.floor((character?.constitution - 10)/2) >= 0 ? ("+"+Math.floor((character?.constitution - 10)/2)) : (Math.floor((character?.constitution - 10)/2));
-  const intModifier = Math.floor((character?.intelligence - 10)/2) >= 0 ? ("+"+Math.floor((character?.intelligence - 10)/2)) : (Math.floor((character?.intelligence - 10)/2));
-  const wisModifier = Math.floor((character?.wisdom - 10)/2) >= 0 ? ("+"+Math.floor((character?.wisdom - 10)/2)) : (Math.floor((character?.wisdom - 10)/2));
-  const chaModifier = Math.floor((character?.charisma - 10)/2) >= 0 ? ("+"+Math.floor((character?.charisma - 10)/2)) : (Math.floor((character?.charisma - 10)/2));
+  const strModifier =
+    Math.floor((character?.strength - 10) / 2) >= 0
+      ? "+" + Math.floor((character?.strength - 10) / 2)
+      : Math.floor((character?.strength - 10) / 2);
+  const dexModifier =
+    Math.floor((character?.dexterity - 10) / 2) >= 0
+      ? "+" + Math.floor((character?.dexterity - 10) / 2)
+      : Math.floor((character?.dexterity - 10) / 2);
+  const conModifier =
+    Math.floor((character?.constitution - 10) / 2) >= 0
+      ? "+" + Math.floor((character?.constitution - 10) / 2)
+      : Math.floor((character?.constitution - 10) / 2);
+  const intModifier =
+    Math.floor((character?.intelligence - 10) / 2) >= 0
+      ? "+" + Math.floor((character?.intelligence - 10) / 2)
+      : Math.floor((character?.intelligence - 10) / 2);
+  const wisModifier =
+    Math.floor((character?.wisdom - 10) / 2) >= 0
+      ? "+" + Math.floor((character?.wisdom - 10) / 2)
+      : Math.floor((character?.wisdom - 10) / 2);
+  const chaModifier =
+    Math.floor((character?.charisma - 10) / 2) >= 0
+      ? "+" + Math.floor((character?.charisma - 10) / 2)
+      : Math.floor((character?.charisma - 10) / 2);
 
   const maxLife = character?.life;
   const [life, setLife] = useState(maxLife);
@@ -127,12 +144,10 @@ export function Sheet() {
     if (life > 0) setLife(life - 1);
   }
 
-  function checkProficiency() {
-
-  }
+  function checkProficiency() {}
 
   return (
-    <div className={styles.container}>
+       <div className={styles.container}>
       <div className={styles.head}>
         <div className={styles.basicInfo}>
           <div
@@ -340,7 +355,7 @@ export function Sheet() {
           <Separator orientation="vertical" />
           <div className={styles.flex}>
             <h3>Hit Dice</h3>
-            <h3 className={styles.hitDice}>{character.hitDie}</h3>
+            <h3 className={styles.hitDice}>{character?.hitDie}</h3>
           </div>
         </div>
       </div>
@@ -357,28 +372,28 @@ export function Sheet() {
               </tr>
             </thead>
             <tbody>
-              {
-                mapSkill.map((skill, index) => {
-                console.log(skill)
-                  return (
-                    <tr>
-                      <td>
-                        <Checkbox.Root
-                              className={styles.CheckboxRoot}
-                              checked={skill["proficiency"]}
-                              id="c1"
+              {mapSkill.map((skill, index) => {
+                console.log(skill);
+                return (
+                  <tr>
+                    <td>
+                      <Checkbox.Root
+                        className={styles.CheckboxRoot}
+                        checked={skill["proficiency"]}
+                        id="c1"
+                      >
+                        <Checkbox.Indicator
+                          className={styles.CheckboxIndicator}
                         >
-                          <Checkbox.Indicator className={styles.CheckboxIndicator}>
-                            <CheckIcon />
-                          </Checkbox.Indicator>
-                        </Checkbox.Root>
-                      </td>
-                      <td>{skill["modifier"]}</td>
-                      <td>{skill["skill"]}</td>
+                          <CheckIcon />
+                        </Checkbox.Indicator>
+                      </Checkbox.Root>
+                    </td>
+                    <td>{skill["modifier"]}</td>
+                    <td>{skill["skill"]}</td>
                   </tr>
-                  )
-                })
-              }
+                );
+              })}
             </tbody>
           </table>
         </div>

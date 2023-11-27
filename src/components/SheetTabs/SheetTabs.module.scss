@@ -114,15 +114,34 @@
       }
     }
   }
+
+  .addButton {
+    display: flex;
+    justify-content: right;
+
+    button {
+      padding: $spacer-s;
+      background: $color-primary;
+      border-radius: 4px;
+
+      font-weight: bold;
+      font-size: 16px;
+
+      &:hover {
+        cursor: pointer;
+        background: $color-primary-hover;
+      }
+    }
+  }
 }
 
-.spells{
+.spells {
   display: flex;
   padding: 10px;
   gap: 10px;
 }
 
-.spellsAttributes{
+.spellsAttributes {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -132,7 +151,6 @@
   gap: 10px;
   align-items: center;
   justify-content: center;
-
 }
 
 .abilityName {
