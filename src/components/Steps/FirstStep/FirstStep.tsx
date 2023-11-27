@@ -3,35 +3,39 @@ import * as Separator from '@radix-ui/react-separator';
 
 
 
-export default function FirstStep() {
+export default function FirstStep(props: { handleSaveRace: (race: string) => void; }) {
+    const handleSaveRace = (race: string) => {
+                props.handleSaveRace(race)
+    }
+
     return (
         <div className={styles.firstStepContainer}>
             <div className={styles.classesContainer}>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("DRAGONBORN")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Dragonborn.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("DWARF")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Dwarf.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("ELF")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Elf.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("GNOME")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Gnome.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("HALF_ELF")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Half-Elf.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("HALF_ORC")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Half-Orc.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("HALFLING")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Halfling.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("HUMAN")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Human.png"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveRace("TIEFLING")} className={styles.classIcon}>
                     <img src="/src/assets/races/100px-Race_Tiefling.png"/>
                 </div>
             </div>

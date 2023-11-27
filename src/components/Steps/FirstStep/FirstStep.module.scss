@@ -1,4 +1,4 @@
-@import "../../design-tokens/_scss-variables.scss";
+@import "../../../design-tokens/scss-variables";
 
 .SeparatorRoot {
     background-color: white;
@@ -22,9 +22,9 @@
       row-gap: 40px;
       margin: 10px;
       margin-right: 0;  
-      width: 70%;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr;
+      width: 50%;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
   }
   
   .classIcon {
@@ -32,11 +32,6 @@
       aspect-ratio: 1;
   }
   
-  .classIcon img {
-    height: 100px;
-    aspect-ratio: 1;
-  }
-
   .classDescriptionContainer {
       display: flex;
       gap: 25px;

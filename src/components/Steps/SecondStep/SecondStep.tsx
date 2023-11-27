@@ -3,45 +3,48 @@ import * as Separator from '@radix-ui/react-separator';
 
 
 
-export default function SecondStep({character}: any) {
+export default function SecondStep(props: { handleSaveClass: (race: string) => void; }) {
+    const handleSaveClass = (characterClass: string) => {
+        props.handleSaveClass(characterClass)
+    }
 
     return (
         <div className={styles.firstStepContainer}>
             <div className={styles.classesContainer}>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("BARBARIAN")} className={styles.classIcon}>
                     <img src="/src/assets/classes/barbarian-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("BARD")} className={styles.classIcon}>
                     <img src="/src/assets/classes/bard-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("CLERIC")} className={styles.classIcon}>
                     <img src="/src/assets/classes/cleric-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("DRUID")} className={styles.classIcon}>
                     <img src="/src/assets/classes/druid-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("FIGHTERS")} className={styles.classIcon}>
                     <img src="/src/assets/classes/fighter-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("MONK")} className={styles.classIcon}>
                     <img src="/src/assets/classes/monk-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("PALADIN")} className={styles.classIcon}>
                     <img src="/src/assets/classes/paladin-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("RANGER")} className={styles.classIcon}>
                     <img src="/src/assets/classes/ranger-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("ROGUE")} className={styles.classIcon}>
                     <img src="/src/assets/classes/rogue-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("SORCERER")} className={styles.classIcon}>
                     <img src="/src/assets/classes/sorcerer-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("WARLOCK")} className={styles.classIcon}>
                     <img src="/src/assets/classes/warlock-class.svg"/>
                 </div>
-                <div className={styles.classIcon}>
+                <div onClick={() => handleSaveClass("WIZARD")} className={styles.classIcon}>
                     <img src="/src/assets/classes/wizard-class.svg"/>
                 </div>
             </div>
