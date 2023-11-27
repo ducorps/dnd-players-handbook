@@ -93,11 +93,13 @@ export function Sheet() {
       let modifier = skill[1];
       let s = skill[0];
 
-      mapSkill.push({
-        proficiency: prof,
-        modifier: modifier,
-        skill: s,
-      });
+      if(s !== "id") {
+        mapSkill.push({
+          proficiency: prof,
+          modifier: modifier,
+          skill: s,
+        });
+      }
       // let bonus = modifier + (prof ? 2 : 0)
     });
 
@@ -147,7 +149,7 @@ export function Sheet() {
   function checkProficiency() {}
 
   return (
-       <div className={styles.container}>
+   <div className={styles.container}>
       <div className={styles.head}>
         <div className={styles.basicInfo}>
           <div

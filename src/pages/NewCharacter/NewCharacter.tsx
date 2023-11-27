@@ -14,8 +14,8 @@ import { useParams } from "react-router";
 enum Steps {
   RACE = 1,
   CLASS = 2,
-  ABILITIES = 3,
-  BACKGROUND = 4,
+  BACKGROUND = 3,
+  ABILITIES = 4,
   PROFICIENCIES = 5,
   EQUIPMENT = 6,
 }
@@ -31,6 +31,7 @@ export function NewCharacter() {
   const [selectedProficiencies, setSelectedProficiencies] = useState<string[]>([]);
   const [selectedClass, setSelectedClass] = useState<string>("");
   const [selectedBackground, setSelectedBackground] = useState<string>("");
+  const [selectedLanguages, setSelectedLanguages] = useState<{ languageType: string }[]>([]);
 
   const params = useParams();
 
@@ -61,6 +62,9 @@ export function NewCharacter() {
       case 4:
           await saveSelectedProficiencies();
         break;
+      case 5:
+        await saveSelectedLanguages();
+        break;
     }
     if (step < 6) {
       const newStep = step + 1;
@@ -68,6 +72,23 @@ export function NewCharacter() {
       setStep(newStep);
       setIsLoading(false)
     }
+  }
+
+  const changeSelectedLanguages = async (languages: { languageType: string }[]) => {
+    setSelectedLanguages(languages)
+  };
+
+  async function saveSelectedLanguages() {
+    if(!isLoading){
+      await api.post(`/characters/${params.idCharacter}/language`,
+          selectedLanguages
+      ).then((response) => {
+        setCharacter(response.data);
+        setIsLoading(false)
+      })
+    }
+
+    setIsLoading(true)
   }
 
   const changeSelectedProficiencies = async (proficiencies: string[]) => {
@@ -165,10 +186,10 @@ export function NewCharacter() {
             <div className={styles.slideStyle}>
               {step === Steps.RACE && <FirstStep changeRace={changeSelectedRace}/>}
               {step === Steps.CLASS && <SecondStep changeClass={changeSelectClass} />}
-              {step === Steps.ABILITIES && <ThirdStep changeBackground={changeSelectedBackground}/>}
-              {step === Steps.BACKGROUND && <FourthStep changeProficiencies={changeSelectedProficiencies}/>}
-              {step === Steps.PROFICIENCIES && <FifthStep />}
-              {step === Steps.EQUIPMENT && <SixthStep />}
+              {step === Steps.BACKGROUND && <ThirdStep changeBackground={changeSelectedBackground}/>}
+              {step === Steps.ABILITIES && <FourthStep changeProficiencies={changeSelectedProficiencies}/>}
+              {step === Steps.PROFICIENCIES && <FifthStep changeSelectedLanguages={ changeSelectedLanguages }/>}
+              {step === Steps.EQUIPMENT &&  <CharacterInfo />}
             </div>
 
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -179,11 +200,6 @@ export function NewCharacter() {
               )}
             </div>
           </div>
-        </div>
-
-        <div style={{ flexBasis: "30%" }} className={styles.boardStyle}>
-          <h2 className={styles.titleStyle}>Character</h2>
-          <CharacterInfo />
         </div>
       </div>
       <Progress.Root className={styles.ProgressRoot} value={progress}>
