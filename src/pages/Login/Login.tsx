@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { api } from "../../api/api";
+import { MouseEvent, useEffect, useState} from "react";
+import {api} from "../../api/api";
 import * as Form from "@radix-ui/react-form";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import styles from "./Login.module.scss";
-import { PersonIcon } from "@radix-ui/react-icons";
+import {PersonIcon} from "@radix-ui/react-icons";
 
 export function Login() {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export function Login() {
     e.preventDefault();
     try {
       const response = await api.post('/auth/sign-in', credentials);
-      const { token, refreshToken } = response.data;
+      const {token, refreshToken} = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
 
@@ -39,7 +39,10 @@ export function Login() {
     setLoading(false);
   };
 
-  const createNewAccount = async () => {
+  const createNewAccount = async (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    setLoading(true);
+
     const parameters = {
       ...credentials,
       role: ["user"]
@@ -49,7 +52,8 @@ export function Login() {
 
     alert(response.data.message)
     
-    setIsNewAccount(false);
+    setIsNewAccount(false)
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -144,19 +148,19 @@ export function Login() {
           }
 
           { isNewAccount === false &&
-            <button onClick={() => setIsNewAccount(true)}>
+            <button disabled={loading} onClick={() => setIsNewAccount(true)}>
               Create new account
             </button>
           }
 
           { isNewAccount === true &&
-            <button onClick={() => createNewAccount()}>
+            <button disabled={loading} onClick={(e) => createNewAccount(e)}>
               Create
             </button>
           }
 
           { isNewAccount === true &&
-            <button onClick={() => setIsNewAccount(false)}>
+            <button disabled={loading} onClick={() => setIsNewAccount(false)}>
               Cancel
             </button>
           }

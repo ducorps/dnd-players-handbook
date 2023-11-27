@@ -80,7 +80,7 @@ export function Home() {
                 </div>
                 <Link
                   className={styles.accountButton}
-                  to={`/character/${item.id}/sheet`}
+                  to={ item.isCompleted ? `/character/${item.id}/sheet` : `/character/${item.id}/create`}
                 >
                   <div className={styles.playButton}>
                     <svg
