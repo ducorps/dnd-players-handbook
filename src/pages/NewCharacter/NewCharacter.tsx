@@ -171,9 +171,9 @@ export function NewCharacter() {
     <>
       <div className={styles.containerStyle}>
         <div
-          style={{ flexBasis: "70%", flexDirection: "row" }}
+          style={{ flexDirection: "row", flex: 1 }}
           className={styles.boardStyle}
-        >
+          >
           <div className={styles.stepsContainer}>
             <div style={{ display: "flex", alignItems: "center" }}>
               {step !== Steps.RACE && (
@@ -189,7 +189,7 @@ export function NewCharacter() {
               {step === Steps.BACKGROUND && <ThirdStep changeBackground={changeSelectedBackground}/>}
               {step === Steps.ABILITIES && <FourthStep changeProficiencies={changeSelectedProficiencies}/>}
               {step === Steps.PROFICIENCIES && <FifthStep changeSelectedLanguages={ changeSelectedLanguages }/>}
-              {step === Steps.EQUIPMENT &&  <CharacterInfo />}
+              {step === Steps.EQUIPMENT &&  <CharacterInfo characterSaved={ character }/>}
             </div>
 
             <div style={{ display: "flex", alignItems: "center" }}>

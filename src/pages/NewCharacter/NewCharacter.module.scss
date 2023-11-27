@@ -2,11 +2,13 @@
 
 .containerStyle {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
 
   width: 100%;
   min-height: 50vh;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .slideStyle > div:first-child {

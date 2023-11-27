@@ -35,58 +35,58 @@ export function Sheet() {
       let prof = false;
       switch (skill[0]) {
         case "acrobatics":
-          prof = skill[1] !== dexModifier;
+          prof = skill[1] > dexModifier;
           break;
         case "animalHandling":
-          prof = skill[1] !== wisModifier;
+          prof = skill[1] > wisModifier;
           break;
         case "arcana":
-          prof = skill[1] !== intModifier;
+          prof = skill[1] > intModifier;
           break;
         case "athletics":
-          prof = skill[1] !== strModifier;
+          prof = skill[1] > strModifier;
           break;
         case "deception":
-          prof = skill[1] !== chaModifier;
+          prof = skill[1] > chaModifier;
           break;
         case "history":
-          prof = skill[1] !== intModifier;
+          prof = skill[1] > intModifier;
           break;
         case "insight":
-          prof = skill[1] !== wisModifier;
+          prof = skill[1] > wisModifier;
           break;
         case "intimidation":
-          prof = skill[1] !== chaModifier;
+          prof = skill[1] > chaModifier;
           break;
         case "investigation":
-          prof = skill[1] !== intModifier;
+          prof = skill[1] > intModifier;
           break;
         case "medicine":
-          prof = skill[1] !== wisModifier;
+          prof = skill[1] > wisModifier;
           break;
         case "nature":
-          prof = skill[1] !== intModifier;
+          prof = skill[1] > intModifier;
           break;
         case "perception":
-          prof = skill[1] !== wisModifier;
+          prof = skill[1] > wisModifier;
           break;
         case "performance":
-          prof = skill[1] !== chaModifier;
+          prof = skill[1] > chaModifier;
           break;
         case "persuasion":
-          prof = skill[1] !== chaModifier;
+          prof = skill[1] > chaModifier;
           break;
         case "religion":
-          prof = skill[1] !== intModifier;
+          prof = skill[1] > intModifier;
           break;
         case "sleightOfHand":
-          prof = skill[1] !== dexModifier;
+          prof = skill[1] > dexModifier;
           break;
         case "stealth":
-          prof = skill[1] !== dexModifier;
+          prof = skill[1] > dexModifier;
           break;
         case "survival":
-          prof = skill[1] !== wisModifier;
+          prof = skill[1] > wisModifier;
           break;
       }
 
