@@ -47,7 +47,7 @@ export default function SecondStep({ changeClass }: SecondStepProps) {
                 <div onClick={() => saveClass("DRUID")} className={styles.classIcon}>
                     <img src="/src/assets/classes/druid-class.svg"/>
                 </div>
-                <div onClick={() => saveClass("FIGHTERS")} className={styles.classIcon}>
+                <div onClick={() => saveClass("FIGHTER")} className={styles.classIcon}>
                     <img src="/src/assets/classes/fighter-class.svg"/>
                 </div>
                 <div onClick={() => saveClass("MONK")} className={styles.classIcon}>
