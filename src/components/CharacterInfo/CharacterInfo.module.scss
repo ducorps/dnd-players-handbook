@@ -147,3 +147,15 @@
     display: inline;
     font-weight: bold;
 }
+
+.saveAtributesButton {
+    background-color: $color-base-lighter;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.saveAtributesButton:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}

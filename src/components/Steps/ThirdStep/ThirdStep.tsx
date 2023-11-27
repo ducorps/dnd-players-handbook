@@ -3,7 +3,7 @@ import styles from './ThirdStep.module.scss';
 import { useEffect, useState } from 'react';
 
 type ThirdStepProps = {
-    handleSaveBackground: (background: string) => void;
+    changeBackground: (background: string) => void;
 };
 
 const descriptions = {
@@ -22,19 +22,15 @@ const descriptions = {
     URCHIN: "You grew up on the streets alone, orphaned, and poor, You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each.",
 }
 
-export default function ThirdStep({ handleSaveBackground }: ThirdStepProps ) {
-    const [description, setDescription] = useState("");
-    const [title, setTitle] = useState("");
-
-    useEffect(() => {
-        saveBackground("ACOLYTE")
-      }, [])
+export default function ThirdStep({ changeBackground }: ThirdStepProps ) {
+    const [description, setDescription] = useState(descriptions.ACOLYTE);
+    const [title, setTitle] = useState("ACOLYTE");
 
     const saveBackground = (background: string) => {
         setDescription(descriptions[background]);
         setTitle(background);
 
-        handleSaveBackground(background)
+        changeBackground(background)
     }
 
     return (
