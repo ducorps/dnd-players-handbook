@@ -3,7 +3,7 @@ import styles from "./FirstStep.module.scss";
 import * as Separator from "@radix-ui/react-separator";
 
 type FirstStepProps = {
-  handleSaveRace: (race: string) => void;
+  changeRace: (race: string) => void;
 };
 
 const descriptions = {
@@ -26,19 +26,16 @@ const descriptions = {
     "To be greeted with stares and whispers, to suffer violence and insult on the street, to see mistrust and fear in every eye: this is the lot of the tiefling. And to twist the knife, tieflings know that this is because a pact struck generations ago infused the essence of Asmodeus, overlord of the Nine Hells (and many of the other powerful devils serving under him) into their bloodline. Their appearance and their nature are not their fault but the result of an ancient sin, for which they and their children and their children's children will always be held accountable.",
 };
 
-export default function FirstStep({ handleSaveRace }: FirstStepProps) {
-  const [description, setDescription] = useState("");
-  const [title, setTitle] = useState("");
+export default function FirstStep({ changeRace }: FirstStepProps) {
+  const [description, setDescription] = useState(descriptions.DRAGONBORN);
+  const [title, setTitle] = useState("DRAGONBORN");
 
-  useEffect(() => {
-    saveRace("DRAGONBORN")
-  }, [])
 
   const saveRace = async (race: string) => {
     setDescription(descriptions[race]);
     setTitle(race);
 
-    handleSaveRace(race);
+    changeRace(race);
   };
 
   return (
