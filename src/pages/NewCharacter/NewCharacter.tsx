@@ -51,19 +51,15 @@ export function NewCharacter() {
   }
 
   const handleSaveRace = async (race: string) => {
-    console.log(race)
-    await api.post(`/characters/${character.id}/race`, {
+    await api.post(`/characters/${params.idCharacter}/race`, {
       raceType: race
     }).then((response) => {
       setCharacter(response.data);
     })
-
-    handleNextStep();
   };
 
   const handleSaveClass = async (characterClass: string) => {
-    console.log(characterClass)
-    await api.post(`/characters/${character.id}/class`, {
+    await api.post(`/characters/${params.idCharacter}/class`, {
       classType: characterClass
     }).then((response) => {
       setCharacter(response.data)
@@ -73,8 +69,7 @@ export function NewCharacter() {
   };
 
   const handleSaveBackground = async (background: string) => {
-    console.log(background)
-    await api.post(`/characters/${character.id}/background`, {
+    await api.post(`/characters/${params.idCharacter}/background`, {
         backgroundType: background
     }).then((response) => {
         setCharacter(response.data)
@@ -93,13 +88,6 @@ export function NewCharacter() {
 
   return (
     <>
-      <Progress.Root className={styles.ProgressRoot} value={progress}>
-        <Progress.Indicator
-          className={styles.ProgressIndicator}
-          style={{ transform: `translateX(-${100 - progress}%)` }}
-        />
-      </Progress.Root>
-
       <div className={styles.containerStyle}>
         <div
           style={{ flexBasis: "70%", flexDirection: "row" }}
@@ -138,6 +126,12 @@ export function NewCharacter() {
           <CharacterInfo />
         </div>
       </div>
+      <Progress.Root className={styles.ProgressRoot} value={progress}>
+        <Progress.Indicator
+          className={styles.ProgressIndicator}
+          style={{ transform: `translateX(-${100 - progress}%)` }}
+        />
+      </Progress.Root>
     </>
   );
 }
