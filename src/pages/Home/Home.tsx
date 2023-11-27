@@ -58,7 +58,7 @@ export function Home() {
         className={styles.newCharacter}
         onClick={handleCreateNewCharacter}
       >
-        <h2>Criar novo</h2>
+        <h2>{loading ? "Loading..." : "Criar novo"}</h2>
         <h2 style={{ fontWeight: "bold" }}>+</h2>
       </button>
 

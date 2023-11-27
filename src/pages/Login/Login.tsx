@@ -49,7 +49,7 @@ export function Login() {
 
     alert(response.data.message)
     
-    navigate("/login")
+    setIsNewAccount(false);
   };
 
   useEffect(() => {
@@ -150,7 +150,7 @@ export function Login() {
           }
 
           { isNewAccount === true &&
-            <button onClick={() => createNewAccount}>
+            <button onClick={() => createNewAccount()}>
               Create
             </button>
           }
