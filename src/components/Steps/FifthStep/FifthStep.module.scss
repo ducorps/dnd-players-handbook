@@ -1,9 +1,14 @@
-@import "../../design-tokens/_scss-variables.scss";
+@import "../../../design-tokens/scss-variables";
 
 .fifthContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    display: flex;
+    width: 800px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 50px;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .selectContainer {
@@ -11,6 +16,7 @@
     flex-direction: column;
     gap: 10px   ;
     margin: 10px;
+    width: 50%;
 }
 
 .selectContainer div {

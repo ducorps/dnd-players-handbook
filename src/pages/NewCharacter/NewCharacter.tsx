@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import * as Progress from "@radix-ui/react-progress";
 import styles from "./NewCharacter.module.scss";
-import SecondStep from "../../components/SecondStep/SecondStep";
-import FirstStep from "../../components/FirstStep/FirstStep";
+import SecondStep from "../../components/Steps/SecondStep/SecondStep";
+import FirstStep from "../../components/Steps/FirstStep/FirstStep";
 import CharacterInfo from "../../components/CharacterInfo/CharacterInfo";
-import ThirdStep from "../../components/ThirdStep/ThirdStep";
-import FifthStep from "../../components/FifthStep/FifthStep";
-import FourthStep from "../../components/FourthStep/FourthStep";
-import SixthStep from "../../components/SixthStep/SixthStep";
+import ThirdStep from "../../components/Steps/ThirdStep/ThirdStep";
+import FifthStep from "../../components/Steps/FifthStep/FifthStep";
+import FourthStep from "../../components/Steps/FourthStep/FourthStep";
+import SixthStep from "../../components/Steps/SixthStep/SixthStep";
 import { api } from "../../api/api";
 import { useParams } from "react-router";
 
@@ -50,6 +50,34 @@ export function NewCharacter() {
     }
   }
 
+  const handleSaveRace = async (race: string) => {
+    await api.post(`/characters/${params.idCharacter}/race`, {
+      raceType: race
+    }).then((response) => {
+      setCharacter(response.data);
+    })
+  };
+
+  const handleSaveClass = async (characterClass: string) => {
+    await api.post(`/characters/${params.idCharacter}/class`, {
+      classType: characterClass
+    }).then((response) => {
+      setCharacter(response.data)
+    })
+
+    handleNextStep();
+  };
+
+  const handleSaveBackground = async (background: string) => {
+    await api.post(`/characters/${params.idCharacter}/background`, {
+        backgroundType: background
+    }).then((response) => {
+        setCharacter(response.data)
+    })
+
+    handleNextStep();
+  }
+
   function handlePreviousStep() {
     if (step > 1) {
       const newStep = step - 1;
@@ -60,13 +88,6 @@ export function NewCharacter() {
 
   return (
     <>
-      <Progress.Root className={styles.ProgressRoot} value={progress}>
-        <Progress.Indicator
-          className={styles.ProgressIndicator}
-          style={{ transform: `translateX(-${100 - progress}%)` }}
-        />
-      </Progress.Root>
-
       <div className={styles.containerStyle}>
         <div
           style={{ flexBasis: "70%", flexDirection: "row" }}
@@ -82,9 +103,9 @@ export function NewCharacter() {
             </div>
 
             <div className={styles.slideStyle}>
-              {step === Steps.RACE && <FirstStep />}
-              {step === Steps.CLASS && <SecondStep character={character} />}
-              {step === Steps.ABILITIES && <ThirdStep />}
+              {step === Steps.RACE && <FirstStep handleSaveRace={handleSaveRace}/>}
+              {step === Steps.CLASS && <SecondStep handleSaveClass={handleSaveClass} />}
+              {step === Steps.ABILITIES && <ThirdStep handleSaveBackground={handleSaveBackground}/>}
               {step === Steps.BACKGROUND && <FourthStep />}
               {step === Steps.PROFICIENCIES && <FifthStep />}
               {step === Steps.EQUIPMENT && <SixthStep />}
@@ -105,6 +126,12 @@ export function NewCharacter() {
           <CharacterInfo />
         </div>
       </div>
+      <Progress.Root className={styles.ProgressRoot} value={progress}>
+        <Progress.Indicator
+          className={styles.ProgressIndicator}
+          style={{ transform: `translateX(-${100 - progress}%)` }}
+        />
+      </Progress.Root>
     </>
   );
 }
