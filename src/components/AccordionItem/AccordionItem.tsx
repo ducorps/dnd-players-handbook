@@ -15,7 +15,7 @@ type AccordionTriggerType = {
 
 export function AccordionItem({ children, title, value }: AccordionItemType) {
   const AccordionTrigger = React.forwardRef(
-    ({ children }: AccordionTriggerType) => (
+    ({ children }: AccordionTriggerType, ref) => (
       <Accordion.Header className={styles.accordionHeader}>
         <Accordion.Trigger className={styles.accordionTrigger}>
           {children}
