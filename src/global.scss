@@ -70,7 +70,7 @@ textarea::selection {
 
 }
 
-input {
+input, select {
   width: 100%;
   padding: $spacer-s;
   border-radius: $spacer-xs;
@@ -82,3 +82,4 @@ textarea {
   resize: none;
   padding: 10px;
 }
+

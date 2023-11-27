@@ -24,7 +24,6 @@ export function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
-    console.log("asda");
     try {
       const response = await api.post('/auth/sign-in', credentials);
       const { token, refreshToken } = response.data;
@@ -75,7 +74,7 @@ export function Login() {
             </Form.Control>
 
             <Form.Message match="valueMissing">
-              Please enter your email
+              Please enter your username
             </Form.Message>
           </Form.Field>
 

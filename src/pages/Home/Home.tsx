@@ -22,7 +22,6 @@ export function Home() {
 
   async function getCharactersList() {
     await api.get(`characters/user`, {params: {page: page, size: 12}}).then((res: any) => {
-      console.log(res.data);
       setCharacterList(res.data.content);
     });
   }
