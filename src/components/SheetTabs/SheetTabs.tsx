@@ -4,10 +4,52 @@ import * as Accordion from "@radix-ui/react-accordion";
 import * as RadixHoverCard from "@radix-ui/react-hover-card";
 import { AccordionItem } from "../AccordionItem/AccordionItem";
 import { HoverCard } from "../HoverCard/HoverCard";
-import * as Dialog from '@radix-ui/react-dialog';
+import * as Dialog from "@radix-ui/react-dialog";
 import { Modal } from "../Modal/Modal";
+import { useParams } from "react-router";
+import { api } from "../../api/api";
+import { useEffect, useState } from "react";
+
+type Item = {
+  id: number;
+  armorClass: number;
+  armorType: any;
+  damage: string;
+  name: string;
+  properties: string[];
+  stealth: Boolean;
+  strength: number;
+  type: string;
+  value: { amount: number; currencyType: string };
+  weight: number;
+};
 
 export function SheetTabs() {
+  const params = useParams();
+  const idCharacter: string = params.idCharacter!;
+  const [inventory, setInventory] = useState<Item[]>([]);
+  const [inventoryId, setInventoryId] = useState<number>();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getInventory();
+  }, []);
+
+  async function getInventory() {
+    setLoading(true);
+    await api.get(`inventories/character/${idCharacter}`).then((res) => {
+      const data = res?.data[0].items;
+      const inventoryId = res?.data[0].id;
+      setInventory(data as Item[]);
+      setInventoryId(inventoryId);
+    });
+    setLoading(false);
+  }
+
+  async function onDeleteItem(item: number) {
+    await api.delete(`items/${item}`).then(() => getInventory());
+  }
+
   return (
     <Tabs.Root className={styles.tabsRoot} defaultValue="tab1">
       <Tabs.List className={styles.tabsList} aria-label="Manage your account">
@@ -110,33 +152,51 @@ export function SheetTabs() {
           </div>
           <div>
             <h3>Items</h3>
-            <table cellSpacing="0">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Weight</th>
-                  <th>Value</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <RadixHoverCard.Root>
-                  <RadixHoverCard.Trigger asChild>
-                    <tr>
-                      <td>name</td>
-                      <td>4lb</td>
-                      <td>100GP</td>
-                      <td>1</td>
-                    </tr>
-                  </RadixHoverCard.Trigger>
-                  <HoverCard>
-                    <p style={{ color: "black" }}>
-                      outras propriedades do item
-                    </p>
-                  </HoverCard>
-                </RadixHoverCard.Root>
-              </tbody>
-            </table>
+            {loading ? (
+              "Loading Items..."
+            ) : (
+              <table cellSpacing="0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Value</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {inventory?.map((item) => {
+                    return (
+                      <RadixHoverCard.Root key={item.id}>
+                        <RadixHoverCard.Trigger asChild>
+                          <tr>
+                            <td>{item.name}</td>
+                            <td>{item.weight}</td>
+                            <td>
+                              {item.value.amount}{" "}
+                              {item.value.currencyType.toLowerCase()}
+                            </td>
+                            <td onClick={() => onDeleteItem(item.id)}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 256 256"
+                              >
+                                <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path>
+                              </svg>
+                            </td>
+                          </tr>
+                        </RadixHoverCard.Trigger>
+                        <HoverCard>
+                          <p style={{ color: "black" }}>
+                            outras propriedades do item
+                          </p>
+                        </HoverCard>
+                      </RadixHoverCard.Root>
+                    );
+                  })}
+                </tbody>
+              </table>
+            )}
           </div>
           <Dialog.Root>
             <Dialog.Trigger asChild>
@@ -144,7 +204,7 @@ export function SheetTabs() {
                 <button>+ Equipment</button>
               </div>
             </Dialog.Trigger>
-            <Modal />
+            <Modal getInventory={getInventory} inventoryId={inventoryId} />
           </Dialog.Root>
         </div>
       </Tabs.Content>

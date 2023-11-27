@@ -112,12 +112,23 @@
       &:hover {
         background-color: $color-base;
       }
+
+      svg {
+        fill: $color-content;
+        width: 1.3rem;
+
+        &:hover {
+          cursor: pointer;
+          fill: $color-warning;
+        }
+      }
     }
   }
 
   .addButton {
     display: flex;
     justify-content: right;
+    margin-top: 2rem;
 
     button {
       padding: $spacer-s;

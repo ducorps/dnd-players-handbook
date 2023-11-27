@@ -214,7 +214,7 @@ export function Sheet() {
                   src="/src/assets/icons/eye.svg"
                 />
               </Tooltip>
-              {10 + character?.skill.perception}
+              {10 + character?.skill?.perception}
             </div>
             <div>
               <Tooltip tooltip={"Speed"}>
@@ -373,7 +373,6 @@ export function Sheet() {
             </thead>
             <tbody>
               {mapSkill.map((skill, index) => {
-                console.log(skill);
                 return (
                   <tr>
                     <td>

@@ -1,14 +1,36 @@
-import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import styles from "./Modal.module.scss";
 import { useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import { api } from "../../api/api";
 
-export function Modal() {
-  const [type, setType] = useState<"armor" | "weapon" | "other">("other");
+export function Modal({
+  getInventory,
+  inventoryId,
+}: {
+  getInventory: () => void;
+  inventoryId: number | undefined;
+}) {
+  const [form, setForm] = useState({
+    name: "",
+  });
 
-  function onSelectType(type: any) {
-    console.log(type);
+  async function saveItem() {
+    await api
+      .post(`/inventories/${inventoryId}/add-item`, form.name, {
+        headers: { "Content-Type": "text/plain" },
+      })
+      .then(() => {
+        getInventory();
+      });
   }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <Dialog.Portal>
@@ -18,36 +40,25 @@ export function Modal() {
           Add Equipment
         </Dialog.Title>
         <Dialog.Description className={styles.DialogDescription}>
-          Add your equipment here. Click save when you're done.
+          Add your equipment here.
         </Dialog.Description>
         <form className={styles.form}>
-          <label htmlFor="#type">Type:</label>
-          <select onChange={onSelectType} value={type} id="type">
-            <option>Other</option>
-            <option>Weapon</option>
-            <option>Armor</option>
-          </select>
-
-          <input id="name" placeholder="Name"></input>
-
-          <input id="value" placeholder="Value"></input>
-
-          <input id="weight" placeholder="Weight"></input>
-
-          {type === "armor" && (
-            <>
-              <input placeholder="Damage"></input>
-              <input placeholder="Properties"></input>
-            </>
-          )}
-          {type === "weapon" && (
-            <>
-              <input placeholder="Strength"></input>
-              <input placeholder="Stealth"></input>
-              <input placeholder="Armor Class"></input>
-              <input placeholder="Armor Type"></input>
-            </>
-          )}
+          <label htmlFor="#type">Name:</label>
+          <input
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            placeholder="Ex: handaxe"
+          ></input>
+          <Dialog.Close asChild>
+            <button
+              onClick={saveItem}
+              disabled={!form.name}
+              className={styles.saveButton}
+            >
+              Save
+            </button>
+          </Dialog.Close>
         </form>
         <Dialog.Close asChild>
           <button className={styles.IconButton} aria-label="Close">
