@@ -7,7 +7,7 @@
 
 .container {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
 }
 
 .card {
@@ -46,10 +46,12 @@
     background: $color-secondary;
     padding: $spacer-s;
     border-radius: $spacer-xs;
+
     &:hover {
       background-color: $color-secondary-hover;
       cursor: pointer;
     }
+
     &:disabled {
       background: $color-content;
       cursor: default;
@@ -61,14 +63,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   background-color: $color-base;
   height: 85px;
   width: 85px;
 
   border-radius: 50%;
 }
-
 
 .formField {
   display: flex;
