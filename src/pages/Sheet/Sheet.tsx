@@ -10,18 +10,19 @@ import { useParams } from "react-router";
 import { api } from "../../api/api";
 
 export function Sheet() {
-  let { idCharacter } = useParams();
+  const params = useParams();
   const [character, setCharacter] = useState();
   const [skillList, setSkillList] = useState([]);
+  const [mapSkill, setMapSkill] = useState([]);
 
   async function getCharacter() {
+    const idCharacter: string = params.idCharacter!;
+
     await api.get(`/characters/${idCharacter}`)
-      .then((res: any) => {
+      .then((res) => {
         setCharacter(res.data);
         setLife(res.data.life);
-        setSkillList(Object.entries(res.data.skill))
-        console.log(skillList);
-        console.log(res.data);
+        buildSkills(res.data!.skill)
       })
   }
 
@@ -29,26 +30,80 @@ export function Sheet() {
     getCharacter();
   }, [])
 
-  const skills = [
-    { proficiency: true, modifier: 3, skill: "Acrobatics", bonus: 6 },
-    { proficiency: false, modifier: 2, skill: "Animal Handling", bonus: 2 },
-    { proficiency: false, modifier: 5, skill: "Arcana", bonus: 8 },
-    { proficiency: false, modifier: 1, skill: "Athletics", bonus: 1 },
-    { proficiency: false, modifier: 1, skill: "Deception", bonus: 1 },
-    { proficiency: false, modifier: 1, skill: "History", bonus: 1 },
-    { proficiency: true, modifier: 4, skill: "Insight", bonus: 7 },
-    { proficiency: true, modifier: 1, skill: "Intimidation", bonus: 1 },
-    { proficiency: true, modifier: 5, skill: "Investigation", bonus: 8 },
-    { proficiency: false, modifier: 1, skill: "Medicine", bonus: 1 },
-    { proficiency: false, modifier: 3, skill: "Nature", bonus: 6 },
-    { proficiency: false, modifier: 5, skill: "Perception", bonus: 8 },
-    { proficiency: false, modifier: 1, skill: "Performance", bonus: 1 },
-    { proficiency: false, modifier: 3, skill: "Persuasion", bonus: 6 },
-    { proficiency: false, modifier: 1, skill: "Religion", bonus: 1 },
-    { proficiency: false, modifier: 3, skill: "Sleight of Hand", bonus: 6 },
-    { proficiency: false, modifier: 1, skill: "Stealth", bonus: 1 },
-    { proficiency: true, modifier: 5, skill: "Survival", bonus: 8 },
-  ];
+  function buildSkills(skills) {
+    let mapSkill: any[] = []
+    Object.entries(skills).map((skill: [string, unknown]) => {
+      let prof = false;
+      switch (skill[0]) {
+        case "acrobatics":
+            prof = (skill[1] !== dexModifier);
+          break;
+        case "animalHandling":
+            prof = (skill[1] !== wisModifier);
+            break;
+        case "arcana":
+            prof = (skill[1] !== intModifier);
+            break;
+        case "athletics":
+            prof = (skill[1] !== strModifier);
+            break;
+        case "deception":
+            prof = (skill[1] !== chaModifier);
+            break;
+        case "history":
+            prof = (skill[1] !== intModifier);
+            break;
+        case "insight":
+            prof = (skill[1] !== wisModifier);
+            break;
+        case "intimidation":
+            prof = (skill[1] !== chaModifier);
+            break;
+        case "investigation":
+            prof = (skill[1] !== intModifier);
+            break;
+        case "medicine":
+            prof = (skill[1] !== wisModifier);
+            break;
+        case "nature":
+            prof = (skill[1] !== intModifier);
+            break;
+        case "perception":
+            prof = (skill[1] !== wisModifier);
+            break;
+        case "performance":
+            prof = (skill[1] !== chaModifier);
+            break;
+        case "persuasion":
+            prof = (skill[1] !== chaModifier);
+            break;
+        case "religion":
+            prof = (skill[1] !== intModifier);
+            break;
+        case "sleightOfHand":
+            prof = (skill[1] !== dexModifier);
+            break;
+        case "stealth":
+            prof = (skill[1] !== dexModifier);
+            break;
+        case "survival":
+            prof = (skill[1] !== wisModifier);
+            break;
+      }
+
+      let modifier = skill[1]
+      let s = skill[0]
+
+      mapSkill.push({
+        proficiency: prof,
+        modifier: modifier,
+        skill: s,
+      })
+      // let bonus = modifier + (prof ? 2 : 0)
+    })
+
+    setMapSkill(mapSkill);
+  }
 
   const strModifier = Math.floor((character?.strength - 10)/2) >= 0 ? ("+"+Math.floor((character?.strength - 10)/2)) : (Math.floor((character?.strength - 10)/2));
   const dexModifier = Math.floor((character?.dexterity - 10)/2) >= 0 ? ("+"+Math.floor((character?.dexterity - 10)/2)) : (Math.floor((character?.dexterity - 10)/2));
@@ -302,23 +357,28 @@ export function Sheet() {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(skillList).map((skill: any) => (
-                <tr key={skill}>
-                  <td>
-                    <Checkbox.Root
-                      className={styles.CheckboxRoot}
-                      checked={skill[0]}
-                      id="c1"
-                    >
-                      <Checkbox.Indicator className={styles.CheckboxIndicator}>
-                        <CheckIcon />
-                      </Checkbox.Indicator>
-                    </Checkbox.Root>
-                  </td>
-                  <td>{skill[1]}</td>
-                  <td>{skill[0]}</td>
-                </tr>
-              ))}
+              {
+                mapSkill.map((skill, index) => {
+                console.log(skill)
+                  return (
+                    <tr>
+                      <td>
+                        <Checkbox.Root
+                              className={styles.CheckboxRoot}
+                              checked={skill["proficiency"]}
+                              id="c1"
+                        >
+                          <Checkbox.Indicator className={styles.CheckboxIndicator}>
+                            <CheckIcon />
+                          </Checkbox.Indicator>
+                        </Checkbox.Root>
+                      </td>
+                      <td>{skill["modifier"]}</td>
+                      <td>{skill["skill"]}</td>
+                  </tr>
+                  )
+                })
+              }
             </tbody>
           </table>
         </div>
