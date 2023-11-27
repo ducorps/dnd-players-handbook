@@ -219,7 +219,7 @@ export function Sheet() {
             <p>Lvl: {character?.level}</p>
           </div>
           <div>
-            <p>{character?.classType?.classType}</p>
+            <p>{character?.characterClass?.classType}</p>
             <p>{character?.background?.backgroundType}</p>
           </div>
         </div>
@@ -340,7 +340,7 @@ export function Sheet() {
           <Separator orientation="vertical" />
           <div className={styles.flex}>
             <h3>Hit Dice</h3>
-            <h3 className={styles.hitDice}>1d8</h3>
+            <h3 className={styles.hitDice}>{character.hitDie}</h3>
           </div>
         </div>
       </div>

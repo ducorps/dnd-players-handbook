@@ -21,9 +21,9 @@ export function Home() {
   }
 
   async function getCharactersList() {
-    await api.get(`characters/user`, {params: {page: page, size: 10}}).then((res: any) => {
+    await api.get(`characters/user`, {params: {page: page, size: 12}}).then((res: any) => {
       console.log(res.data);
-      setCharacterList(res.data);
+      setCharacterList(res.data.content);
     });
   }
 
@@ -57,25 +57,7 @@ export function Home() {
       </button>
 
       <div className={styles.cardList}>
-        <div className={styles.card}>
-          <div className={styles.img}></div>
-          <div>
-            {/* TODO: fazer condição para aparecer o tooltip só quando a quantidade de caracter do nome passa do máximo */}
-            <Tooltip tooltip={"CharName"}>
-              <p className={styles.charName}>CharName</p>
-            </Tooltip>
-            <span style={{ fontWeight: "bold" }}>race</span>
-            <span>class</span>
-          </div>
-          <Link className={styles.accountButton} to="/characterSheet">
-            <div className={styles.playButton}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                <path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path>
-              </svg>
-            </div>
-          </Link>
-        </div>
-        {characterList.map((item: any) => (
+        {characterList.map((item) => (
           <div key={item.id} className={styles.card}>
             <div className={styles.img}></div>
             <div>
@@ -100,7 +82,7 @@ export function Home() {
       </div>
       <div className={styles.pagination}>
         <img onClick={handlePreviousPage} src="/src/assets/chavron-left.svg" />
-        <p>{page} de {maxPages}</p>
+        <p>{page+1} de {maxPages+1}</p>
         <img onClick={handleNextPage} src="/src/assets/chavron-right.svg" />
       </div>
     </div>
