@@ -49,7 +49,6 @@ export function NewCharacter() {
   },[params.idCharacter])
 
   async function handleNextStep() {
-    console.log(step)
     switch (step) {
       case 1:
           await saveRace();
@@ -127,7 +126,6 @@ export function NewCharacter() {
   }
 
   async function saveClass() {
-    console.log(isLoading)
     if(!isLoading){
       await api.post(`/characters/${params.idCharacter}/class`, {
         classType: selectedClass

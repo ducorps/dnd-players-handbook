@@ -9,9 +9,11 @@ import { PersonIcon } from "@radix-ui/react-icons";
 export function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [isNewAccount, setIsNewAccount] = useState(false);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
+    email: ""
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +26,6 @@ export function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
-    console.log("asda");
     try {
       const response = await api.post('/auth/sign-in', credentials);
       const { token, refreshToken } = response.data;
@@ -36,6 +37,19 @@ export function Login() {
       console.log(error);
     }
     setLoading(false);
+  };
+
+  const createNewAccount = async () => {
+    const parameters = {
+      ...credentials,
+      role: ["user"]
+    }
+    
+    const response = await api.post('auth/sign-up', parameters);
+
+    alert(response.data.message)
+    
+    navigate("/login")
   };
 
   useEffect(() => {
@@ -61,7 +75,7 @@ export function Login() {
                 justifyContent: "space-between",
               }}
             >
-              <Form.Label>E-mail</Form.Label>
+              <Form.Label>Username</Form.Label>
             </div>
 
             <Form.Control asChild>
@@ -75,7 +89,7 @@ export function Login() {
             </Form.Control>
 
             <Form.Message match="valueMissing">
-              Please enter your email
+              Please enter your username
             </Form.Message>
           </Form.Field>
 
@@ -99,11 +113,53 @@ export function Login() {
             </Form.Message>
           </Form.Field>
 
-          <Form.Submit asChild>
-            <button disabled={loading} type="submit">
-              {loading ? "Loading..." : "Login"}
+          { isNewAccount === true &&
+            <Form.Field className={styles.formField} name="password">
+              <div>
+                <Form.Label>E-mail</Form.Label>
+              </div>
+
+              <Form.Control asChild>
+                <input
+                  type="email"
+                  name="email"
+                  value={credentials.email}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Control>
+
+              <Form.Message match="valueMissing">
+                Please enter your email
+              </Form.Message>
+            </Form.Field>
+          }
+
+          { isNewAccount === false &&
+            <Form.Submit asChild>
+              <button disabled={loading} type="submit">
+                {loading ? "Loading..." : "Login"}
+              </button>
+            </Form.Submit>
+          }
+
+          { isNewAccount === false &&
+            <button onClick={() => setIsNewAccount(true)}>
+              Create new account
             </button>
-          </Form.Submit>
+          }
+
+          { isNewAccount === true &&
+            <button onClick={() => createNewAccount}>
+              Create
+            </button>
+          }
+
+          { isNewAccount === true &&
+            <button onClick={() => setIsNewAccount(false)}>
+              Cancel
+            </button>
+          }
         </Form.Root>
       </div>
     </div>

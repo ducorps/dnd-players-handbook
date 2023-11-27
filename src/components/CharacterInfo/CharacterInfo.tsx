@@ -45,7 +45,6 @@ export default function CharacterInfo() {
         await api.post(`characters/${character?.id}/name`, characterName, {headers: {'Content-Type': 'application/text'}})
           .then((res) => {
             setCharacter(res.data);
-            console.log(res.data);
           })
     }
 
@@ -54,7 +53,6 @@ export default function CharacterInfo() {
         await api.post(`characters/${character?.id}/attribute`, attributes, {headers: {'Content-Type': 'application/json'}})
           .then((res) => {
             setCharacter(res.data);
-            console.log(res.data);
           })
     }
 
