@@ -1,13 +1,34 @@
 import styles from "./Sheet.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Slider from "@radix-ui/react-slider";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { Separator } from "../../components/Separator/Separator";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Tooltip } from "../../components/Tooltip/Tooltip";
 import { SheetTabs } from "../../components/SheetTabs/SheetTabs";
+import { useParams } from "react-router";
+import { api } from "../../api/api";
 
 export function Sheet() {
+  let { idCharacter } = useParams();
+  const [character, setCharacter] = useState();
+  const [skillList, setSkillList] = useState([]);
+
+  async function getCharacter() {
+    await api.get(`/characters/${idCharacter}`)
+      .then((res: any) => {
+        setCharacter(res.data);
+        setLife(res.data.life);
+        setSkillList(Object.entries(res.data.skill))
+        console.log(skillList);
+        console.log(res.data);
+      })
+  }
+
+  useEffect(() => {
+    getCharacter();
+  }, [])
+
   const skills = [
     { proficiency: true, modifier: 3, skill: "Acrobatics", bonus: 6 },
     { proficiency: false, modifier: 2, skill: "Animal Handling", bonus: 2 },
@@ -28,7 +49,15 @@ export function Sheet() {
     { proficiency: false, modifier: 1, skill: "Stealth", bonus: 1 },
     { proficiency: true, modifier: 5, skill: "Survival", bonus: 8 },
   ];
-  const maxLife = 33;
+
+  const strModifier = Math.floor((character?.strength - 10)/2) >= 0 ? ("+"+Math.floor((character?.strength - 10)/2)) : (Math.floor((character?.strength - 10)/2));
+  const dexModifier = Math.floor((character?.dexterity - 10)/2) >= 0 ? ("+"+Math.floor((character?.dexterity - 10)/2)) : (Math.floor((character?.dexterity - 10)/2));
+  const conModifier = Math.floor((character?.constitution - 10)/2) >= 0 ? ("+"+Math.floor((character?.constitution - 10)/2)) : (Math.floor((character?.constitution - 10)/2));
+  const intModifier = Math.floor((character?.intelligence - 10)/2) >= 0 ? ("+"+Math.floor((character?.intelligence - 10)/2)) : (Math.floor((character?.intelligence - 10)/2));
+  const wisModifier = Math.floor((character?.wisdom - 10)/2) >= 0 ? ("+"+Math.floor((character?.wisdom - 10)/2)) : (Math.floor((character?.wisdom - 10)/2));
+  const chaModifier = Math.floor((character?.charisma - 10)/2) >= 0 ? ("+"+Math.floor((character?.charisma - 10)/2)) : (Math.floor((character?.charisma - 10)/2));
+
+  const maxLife = character?.life;
   const [life, setLife] = useState(maxLife);
 
   function onChangeLife(value: number[]) {
@@ -43,6 +72,10 @@ export function Sheet() {
     if (life > 0) setLife(life - 1);
   }
 
+  function checkProficiency() {
+
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.head}>
@@ -55,7 +88,7 @@ export function Sheet() {
               height: "125px",
             }}
           ></div>
-          <h2>NAME</h2>
+          <h2>{character?.name}</h2>
         </div>
 
         <div className={styles.asideBasicInfo}>
@@ -90,49 +123,49 @@ export function Sheet() {
               <Tooltip tooltip={"Armour Class"}>
                 <img
                   style={{ height: "32px" }}
-                  src="src/assets/icons/shield.svg"
+                  src="/src/assets/icons/shield.svg"
                 />
               </Tooltip>
-              6
+              {character?.armorClass}
             </div>
             <div>
               <Tooltip tooltip={"Iniciative"}>
                 <img
                   style={{ height: "32px" }}
-                  src="src/assets/icons/group.svg"
+                  src="/src/assets/icons/group.svg"
                 />
               </Tooltip>
-              6
+              +{character?.initiative}
             </div>
             <div>
               <Tooltip tooltip={"Perception"}>
                 <img
                   style={{ height: "25px" }}
-                  src="src/assets/icons/eye.svg"
+                  src="/src/assets/icons/eye.svg"
                 />
               </Tooltip>
-              6
+              {10 + character?.skill.perception}
             </div>
             <div>
               <Tooltip tooltip={"Speed"}>
                 <img
                   style={{ height: "32px" }}
-                  src="src/assets/icons/speed.svg"
+                  src="/src/assets/icons/speed.svg"
                 />
               </Tooltip>
-              6
+              {character?.moveSpeed}
             </div>
           </div>
         </div>
 
         <div className={styles.characterInfo}>
           <div>
-            <p>Tiefling</p>
-            <p>lvl 3</p>
+            <p>{character?.race?.raceType}</p>
+            <p>Lvl: {character?.level}</p>
           </div>
           <div>
-            <p>Bard</p>
-            <p>Acolyte</p>
+            <p>{character?.classType?.classType}</p>
+            <p>{character?.background?.backgroundType}</p>
           </div>
         </div>
       </div>
@@ -142,34 +175,34 @@ export function Sheet() {
           <h3>Saving Throws</h3>
           <div>
             <div>
-              <p>+1</p>
+              <p>{strModifier}</p>
               <p>STR</p>
             </div>
             <Separator orientation="vertical" />
             <div>
-              <p>+1</p>
+              <p>{dexModifier}</p>
               <p>DEX</p>
             </div>
             <Separator orientation="vertical" />
             <div>
-              <p>+1</p>
+              <p>{conModifier}</p>
               <p>CON</p>
             </div>
           </div>
           <Separator orientation="horizontal" />
           <div>
             <div>
-              <p>+1</p>
+              <p>{intModifier}</p>
               <p>INT</p>
             </div>
             <Separator orientation="vertical" />
             <div>
-              <p>+1</p>
+              <p>{wisModifier}</p>
               <p>WIS</p>
             </div>
             <Separator orientation="vertical" />
             <div>
-              <p>+1</p>
+              <p>{chaModifier}</p>
               <p>CHA</p>
             </div>
           </div>
@@ -178,38 +211,38 @@ export function Sheet() {
         <div className={styles.attributes}>
           <div>
             <h2>STR</h2>
-            <p>+1</p>
-            <p>1</p>
+            <p>{strModifier}</p>
+            <p>{character?.strength}</p>
           </div>
 
           <div>
             <h2>DEX</h2>
-            <p>+1</p>
-            <p>1</p>
+            <p>{dexModifier}</p>
+            <p>{character?.dexterity}</p>
           </div>
 
           <div>
             <h2>CON</h2>
-            <p>+1</p>
-            <p>1</p>
+            <p>{conModifier}</p>
+            <p>{character?.constitution}</p>
           </div>
 
           <div>
             <h2>INT</h2>
-            <p>+1</p>
-            <p>1</p>
+            <p>{intModifier}</p>
+            <p>{character?.intelligence}</p>
           </div>
 
           <div>
             <h2>WIS</h2>
-            <p>+1</p>
-            <p>1</p>
+            <p>{wisModifier}</p>
+            <p>{character?.wisdom}</p>
           </div>
 
           <div>
             <h2>CHA</h2>
-            <p>+1</p>
-            <p>1</p>
+            <p>{chaModifier}</p>
+            <p>{character?.charisma}</p>
           </div>
         </div>
 
@@ -266,16 +299,15 @@ export function Sheet() {
                 <th>Proficiency</th>
                 <th>Modifier</th>
                 <th>Skill</th>
-                <th>Bonus</th>
               </tr>
             </thead>
             <tbody>
-              {skills.map((skill, index) => (
-                <tr key={index}>
+              {Object.entries(skillList).map((skill: any) => (
+                <tr key={skill}>
                   <td>
                     <Checkbox.Root
                       className={styles.CheckboxRoot}
-                      checked={skill.proficiency}
+                      checked={skill[0]}
                       id="c1"
                     >
                       <Checkbox.Indicator className={styles.CheckboxIndicator}>
@@ -283,9 +315,8 @@ export function Sheet() {
                       </Checkbox.Indicator>
                     </Checkbox.Root>
                   </td>
-                  <td>{skill.modifier}</td>
-                  <td>{skill.skill}</td>
-                  <td>{skill.bonus}</td>
+                  <td>{skill[1]}</td>
+                  <td>{skill[0]}</td>
                 </tr>
               ))}
             </tbody>

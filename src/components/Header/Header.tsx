@@ -6,7 +6,7 @@ export function Header() {
     <header className={styles.headerStyle}>
       <div>
         <Link to="/">
-          <img style={{ width: "5rem" }} src="src/assets/imgs/logo2.png" />
+          <img style={{ width: "5rem" }} src="/src/assets/imgs/logo2.png" />
         </Link>
       </div>
       <div>

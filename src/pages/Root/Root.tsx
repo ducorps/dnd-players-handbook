@@ -8,7 +8,7 @@ export function Root() {
       <Header />
       <Link to="/">
         <div className={styles.logo}>
-          <img src="src/assets/imgs/logo.png" />
+          <img src="/src/assets/imgs/logo.png" />
         </div>
       </Link>
       <Outlet />
