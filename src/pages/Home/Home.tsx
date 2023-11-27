@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export function Home() {
   const [characterList, setCharacterList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(0);
   const [maxPages, setMaxPages] = useState(3);
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ export function Home() {
   }
 
   async function getCharactersList() {
-    await api.get("characters/user").then((res: any) => {
+    await api.get(`characters/user`, {params: {page: page, size: 10}}).then((res: any) => {
       console.log(res.data);
       setCharacterList(res.data);
     });
@@ -43,7 +43,7 @@ export function Home() {
 
   useEffect(() => {
     getCharactersList();
-  }, []);
+  }, [page]);
 
   return (
     <div className={styles.container}>
