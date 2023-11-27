@@ -94,11 +94,13 @@ export function Sheet() {
       let modifier = skill[1]
       let s = skill[0]
 
-      mapSkill.push({
-        proficiency: prof,
-        modifier: modifier,
-        skill: s,
-      })
+      if(s !== "id") {
+        mapSkill.push({
+          proficiency: prof,
+          modifier: modifier,
+          skill: s,
+        })
+      }
       // let bonus = modifier + (prof ? 2 : 0)
     })
 

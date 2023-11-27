@@ -1,28 +1,31 @@
 import styles from './FifthStep.module.scss';
+import {useState} from "react";
 
 
+type language = {
+    languageType: string;
+}
 
-export default function FifthStep() {
+type FifthStepProps = {
+    changeSelectedLanguages: (arg0: language[]) => void;
+}
+
+export default function FifthStep({ changeSelectedLanguages }: FifthStepProps) {
     const languages = ["Common", "Dwarvish", "Elvish", "Giant", "Gnomish", "Orc", "Halfling", "Draconic"]
-    const tools = [
-        "Artisan's Tools",
-        "Disguise Kit",
-        "Forgery Kit",
-        "Gaming Set",
-        "Herbalism Kit",
-        "Land Vehicles",
-        "Musical Instruments",
-        "Navigator's Tools",
-        "Poisoner's Kit",
-        "Thieves' Tools",
-        "Water Vehicles"
-      ]
-    
+    const [language] = useState<language[]>([])
+
+    function handleOnChange(e: React.ChangeEvent<HTMLSelectElement>, index: number) {
+        language[index] = {languageType: e.target.value.toUpperCase()}
+
+
+        changeSelectedLanguages(language);
+    }
+
     return(
         <div className={styles.fifthContainer}>
             <div className={styles.selectContainer}>
                 <div>Select a language:</div>
-                <select>
+                <select onChange={(e) => handleOnChange(e, 0)}>
                     {languages.map((lang) => (
                         <option key={lang}>{lang}</option>
                     ))}
@@ -30,9 +33,9 @@ export default function FifthStep() {
             </div>
             <div className={styles.selectContainer}>
                 <div>Select a language:</div>
-                <select>
-                    {tools.map((tool) => (
-                        <option key={tool}>{tool}</option>
+                <select onChange={(e) => handleOnChange(e, 1)}>
+                    {languages.map((lang) => (
+                        <option key={lang}>{lang}</option>
                     ))}
                 </select>
             </div>
