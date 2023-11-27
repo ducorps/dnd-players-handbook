@@ -194,7 +194,7 @@ export function NewCharacter() {
 
             <div style={{ display: "flex", alignItems: "center" }}>
               {step !== Steps.EQUIPMENT && (
-                <button onClick={handleNextStep}>
+                <button className={styles.forwardArrow} onClick={handleNextStep}>
                   <img src="/src/assets/chavron-right.svg" alt="Right icon" />
                 </button>
               )}
